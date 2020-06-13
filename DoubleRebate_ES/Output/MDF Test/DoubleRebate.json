@@ -1,0 +1,503 @@
+[
+  {
+    "GaugeSize": 1.1,
+    "ProfileInfo": {
+      "StopSection": 83.0,
+      "RevealHeight": 2500.0,
+      "RevealWidth": 950.0,
+      "Depth": 323.0,
+      "Return1": 15.0,
+      "Architrave1": 38.0,
+      "Rebate1": 41.0,
+      "StopHgt1": 25.0,
+      "Throat": 135.0,
+      "StopHgt2": 25.0,
+      "Rebate2": 41.0,
+      "Architrave2": 38.0,
+      "Return2": 15.0
+    },
+    "BendDataList": [
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "199",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "0, 0, 0",
+            "0, 12.9, 0"
+          ]
+        },
+        "BendAllowance": 2.0999999999999996,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 1,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "198",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "0, 12.9, 0",
+            "37, 49.9, 0"
+          ]
+        },
+        "BendAllowance": 0.99999999999999289,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 2,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "Default",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": null,
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "37, 49.9, 0",
+            "37, 88, 0"
+          ]
+        },
+        "BendAllowance": 2.8999999999999986,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 3,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "192",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "37, 88, 0",
+            "62, 88, 0"
+          ]
+        },
+        "BendAllowance": 0.0,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 4,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "Default",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": null,
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "62, 88, 0",
+            "62, 217, 0"
+          ]
+        },
+        "BendAllowance": 6.0,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 5,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "18C",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "62, 217, 0",
+            "37, 217, 0"
+          ]
+        },
+        "BendAllowance": 0.0,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 6,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "Default",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": null,
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "37, 217, 0",
+            "37, 255.1, 0"
+          ]
+        },
+        "BendAllowance": 2.9000000000000057,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 7,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "186",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "37, 255.1, 0",
+            "0, 292.1, 0"
+          ]
+        },
+        "BendAllowance": 0.99999999999998579,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 8,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "185",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "0, 292.1, 0",
+            "0, 305, 0"
+          ]
+        },
+        "BendAllowance": 2.1000000000000227,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 9,
+        "Displacement": 0.0
+      }
+    ],
+    "Tab": {
+      "Count": 3,
+      "TabBase": 15.0,
+      "TabTop": 10.0
+    },
+    "TopViewDataList": [
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "186",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "0, 0, 0",
+            "0, 12.9, 0"
+          ]
+        },
+        "BendAllowance": 2.0999999999999996,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 1,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "185",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "0, 12.9, 0",
+            "37, 49.9, 0"
+          ]
+        },
+        "BendAllowance": 0.99999999999999289,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 2,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "184",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "37, 49.9, 0",
+            "37, 54.9, 0"
+          ]
+        },
+        "BendAllowance": 36.0,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 3,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "183",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "37, 54.9, 0",
+            "23, 54.9, 0"
+          ]
+        },
+        "BendAllowance": 11.0,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 4,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "182",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "23, 54.9, 0",
+            "23, 250.1, 0"
+          ]
+        },
+        "BendAllowance": -60.199999999999989,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 5,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "181",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "23, 250.1, 0",
+            "37, 250.1, 0"
+          ]
+        },
+        "BendAllowance": 11.0,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 6,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "180",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "37, 250.1, 0",
+            "37, 255.1, 0"
+          ]
+        },
+        "BendAllowance": 36.0,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 7,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "17F",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "37, 255.1, 0",
+            "0, 292.1, 0"
+          ]
+        },
+        "BendAllowance": 0.99999999999998579,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 8,
+        "Displacement": 0.0
+      },
+      {
+        "Line": {
+          "Nature": 2,
+          "Layer name": "PROFILE",
+          "Group index": -1,
+          "Color method": 1,
+          "Color": "Black",
+          "Material": null,
+          "Line weight method": 1,
+          "Line weight": 0.5,
+          "Line type method": 1,
+          "Line type name": null,
+          "Line type scale": 1.0,
+          "Custom data": "17E",
+          "Visible": true,
+          "Selectable": true,
+          "Vertices": [
+            "0, 292.1, 0",
+            "0, 305, 0"
+          ]
+        },
+        "BendAllowance": 2.1000000000000227,
+        "ModifiedLengthTxt": 0.0,
+        "LineType": 9,
+        "Displacement": 0.0
+      }
+    ],
+    "TopViewData": {
+      "ConstVLine3": 5.0,
+      "ConstHLine4": 14.0,
+      "MidWidth": 195.2
+    },
+    "ProfileType": 0
+  }
+]
