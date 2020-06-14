@@ -59,7 +59,7 @@ namespace DoubleR_ES
                 return; // not working now
             }
 
-            JsonData readData=new JsonData(ProfileType.MDF);// not sure using of profile type enum
+            JsonData readData=new JsonData(GetProfileType());// not sure using of profile type enum
             foreach (var dxfFile in dxfFiles)
             {
                 try
@@ -87,19 +87,21 @@ namespace DoubleR_ES
             Show();
         }
 
+        private ProfileType GetProfileType()
+        {
+           return (ProfileType) Enum.Parse(typeof(ProfileType), comboProfileType.Text);
+        }
+
         private void btnCloning_Click(object sender, EventArgs e)
         {
             Hide();
             GetInputData();
 
-            //var generator = new ProfileGenerator();
-            //generator.Generate();
-
-            string jsonString = File.ReadAllText(@"F:\Repository\doublerebate\DoubleRebate_ES\Output\MDF Test\DoubleRebate.json");
+            string jsonString = File.ReadAllText(fileStored);
             List<JsonData> previousData = JsonConvert.DeserializeObject<JArray>(jsonString).ToObject<List<JsonData>>();
             var jsonData = previousData.FirstOrDefault(data => data.GaugeSize == Utilities.InputData.GaugeSize);
 
-            Frame mdFrame=new MDFFrame(jsonData);
+            Frame mdFrame = InitializeFrame(jsonData);
 
             mdFrame.CreateHingeView();
             var hingeEntities = mdFrame.HingEntities;
@@ -116,6 +118,22 @@ namespace DoubleR_ES
             MessageBox.Show("Operation completed");
 
             Show();
+        }
+
+        private Frame InitializeFrame(JsonData jsonData)
+        {
+            Frame frame = null;
+            switch (jsonData.ProfileType)
+            {
+                case ProfileType.MDF:
+                    frame = new MDFFrame(jsonData);
+                    break;
+                case ProfileType.ADL:
+                    frame = new ADLFrame(jsonData);
+                    break;
+            }
+
+            return frame;
         }
 
         private void GetInputData()
@@ -214,6 +232,10 @@ namespace DoubleR_ES
             //
             chkSymmetry.Checked = true;
             lblInputPath.Text = folderPath;
+
+            //add profiles here
+            var profiles = Enum.GetNames(typeof(ProfileType));
+            comboProfileType.DataSource = profiles;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)

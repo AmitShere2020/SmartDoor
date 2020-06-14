@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoubleR_ES.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,11 @@ namespace DoubleR_ES.FrameModel
 {
     public class ADLFrame:Frame
     {
+        public ADLFrame(JsonData jsonData)
+        {
+            JsonData = jsonData;
+        }
+
         public override void CreateHingeView()
         {
            

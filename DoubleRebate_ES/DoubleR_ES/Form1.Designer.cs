@@ -70,12 +70,14 @@
             this.btnBrowse = new System.Windows.Forms.Button();
             this.lblInputPath = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboProfileType = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
+  
             // 
             // getBtn
             // 
@@ -88,12 +90,13 @@
             this.getBtn.Text = "Read DXF";
             this.getBtn.UseVisualStyleBackColor = true;
             this.getBtn.Click += new System.EventHandler(this.getBtn_Click);
+
             // 
             // btnCloning
             // 
             this.btnCloning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloning.Location = new System.Drawing.Point(443, 17);
-            this.btnCloning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCloning.Margin = new System.Windows.Forms.Padding(4);
             this.btnCloning.Name = "btnCloning";
             this.btnCloning.Size = new System.Drawing.Size(100, 37);
             this.btnCloning.TabIndex = 2;
@@ -435,6 +438,9 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+#if Admin
+            this.panel3.Controls.Add(this.comboProfileType);
+#endif
             this.panel3.Controls.Add(this.chkSymmetry);
             this.panel3.Controls.Add(this.txtStopHeight2);
             this.panel3.Controls.Add(this.txtRebate2);
@@ -457,7 +463,7 @@
             // 
             this.chkSymmetry.AutoSize = true;
             this.chkSymmetry.Location = new System.Drawing.Point(508, 21);
-            this.chkSymmetry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkSymmetry.Margin = new System.Windows.Forms.Padding(4);
             this.chkSymmetry.Name = "chkSymmetry";
             this.chkSymmetry.Size = new System.Drawing.Size(92, 21);
             this.chkSymmetry.TabIndex = 21;
@@ -468,10 +474,12 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+#if Admin
             this.panel1.Controls.Add(this.getBtn);
+#endif
             this.panel1.Controls.Add(this.btnCloning);
             this.panel1.Location = new System.Drawing.Point(341, 386);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(641, 67);
             this.panel1.TabIndex = 26;
@@ -480,7 +488,7 @@
             // 
             this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBrowse.Location = new System.Drawing.Point(17, 10);
-            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(100, 37);
             this.btnBrowse.TabIndex = 27;
@@ -504,10 +512,20 @@
             this.panel4.Controls.Add(this.btnBrowse);
             this.panel4.Controls.Add(this.lblInputPath);
             this.panel4.Location = new System.Drawing.Point(341, 491);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(641, 54);
             this.panel4.TabIndex = 29;
+
+            // 
+            // comboProfileType
+            // 
+            this.comboProfileType.FormattingEnabled = true;
+            this.comboProfileType.Location = new System.Drawing.Point(37, 21);
+            this.comboProfileType.Name = "comboProfileType";
+            this.comboProfileType.Size = new System.Drawing.Size(121, 24);
+            this.comboProfileType.TabIndex = 22;
+
             // 
             // Form1
             // 
@@ -578,6 +596,7 @@
         public System.Windows.Forms.TextBox txtTabBase;
         protected System.Windows.Forms.Label label5;
         protected System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboProfileType;
     }
 }
 
