@@ -8,7 +8,9 @@ namespace DoubleR_ES.FrameModel
     public abstract class Frame
     {
         public List<Entity> HingEntities { get; protected set; }
+
         public List<Entity> TopEntities { get; protected set; }
+
         public List<Entity> LockEntities { get; protected set; }
 
         protected List<BendData> RequiredList { get; set; }
@@ -94,39 +96,48 @@ namespace DoubleR_ES.FrameModel
             allowances[8].ModifiedLengthTxt = Utilities.InputData.Return2;
             allowances[8].Displacement = Utilities.InputData.Return2 - JsonData.ProfileInfo.Return2;
         }
-
-        public abstract void CreateHingeView();
+        
         public abstract void CreateTopView();
+
         public abstract void CreateLockView();
 
         protected virtual void CreateLeftProfile()
         {
 
         }
+
         protected virtual void CreateRightProfile()
         {
 
         }
+
         protected virtual void CreateTab()
         {
 
         }
+
         protected virtual void CreateLock()
         {
 
         }
+
         protected virtual void CreateHoles()
         {
 
         }
+
         protected virtual void CreateHinges()
         {
 
         }
+
         protected virtual void CreateSlots()
         {
 
         }
+        
+        public abstract void CreateHingeView();
+        
 
         protected List<Line> DrawPocketLines(Point3D basePoint, double height, double width)
         {

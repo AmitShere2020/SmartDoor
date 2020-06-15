@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using devDept.Geometry;
 using DoubleR_ES.Models;
 using IntelliCAD;
+using Circle = devDept.Eyeshot.Entities.Circle;
 using Entity = devDept.Eyeshot.Entities.Entity;
 using Line = devDept.Eyeshot.Entities.Line;
 using Utility = devDept.Geometry.Utility;
@@ -13,12 +14,7 @@ namespace DoubleR_ES
     internal static class Utilities
     {
         public static InputData InputData { get; set; }
-
-        /// <summary>
-        /// Get distinct vertices of lines
-        /// </summary>
-        /// <param name="profLines"></param>
-        /// <returns></returns>
+        
         public static List<Point3D> GetVertices(List<Line> profLines)
         {
             List<Point3D> points = new List<Point3D>();
@@ -55,8 +51,11 @@ namespace DoubleR_ES
             return lines;
         }
 
+        // IntelliCAD
         public static Application IcadApplication { get; set; }
+
         public static Document ActiveDocument { get; set; }
+
         public static ModelSpace ModelSpace { get; set; }
 
         public static void InitializeCoreComponents()
@@ -74,23 +73,40 @@ namespace DoubleR_ES
             IcadApplication.Visible = true;
         }
 
-        public static void CloningDxf(List<Line> lines)
+        public static void CloningDxf(List<Entity> entityList)
         {
             InitializeCoreComponents();
             // open  new file here
             ActiveDocument=IcadApplication.Documents.Add();
 
-            foreach (var line in lines)
+            foreach (Entity entity in entityList)
             {
-                var start = line.StartPoint;
-                var end = line.EndPoint;
-                var icadline = ActiveDocument.ModelSpace.AddLine(new Point() {x = start.X, y = start.Y},
-                    new Point() {x = end.X, y = end.Y});
-                icadline.Update();
+                if (entity is Line)
+                {
+                    Line line = (Line)entity;
+                    var start = line.StartPoint;
+                    var end = line.EndPoint;
+                    var icadLine = ActiveDocument.ModelSpace.AddLine(new Point() { x = start.X, y = start.Y },
+                        new Point() { x = end.X, y = end.Y });
+                    icadLine.Update();
+                }
+
+                else if(entity is Circle)
+                {
+                    Circle circle = (Circle) entity;
+                    var cPoint = circle.Center;
+                    double rad = circle.Radius;
+                  var iCircle=  ActiveDocument.ModelSpace.AddCircle(new Point(){x=cPoint.X,y=cPoint.Y}, rad);
+                    iCircle.Update();
+                }
             }
+
+           
            
         }
 
+
+        // Core logic
         public static void TranslateEntities(List<BendData> bendList)
         {
             var lines=new List<Line>();
@@ -124,11 +140,8 @@ namespace DoubleR_ES
 
         }
     }
-        
-
-
-    }
+}
 
 
 
-    // Json Storage data
+    

@@ -105,16 +105,17 @@ namespace DoubleR_ES
 
             mdFrame.CreateHingeView();
             var hingeEntities = mdFrame.HingEntities;
-            //Utilities.CloningDxf(hingeEntities.OfType<Line>().ToList());
+            Utilities.CloningDxf(hingeEntities);
 
+            /*
             mdFrame.CreateLockView();
             var lockEntities = mdFrame.LockEntities;
-            //Utilities.CloningDxf(lockEntities.OfType<Line>().ToList());
+            Utilities.CloningDxf(lockEntities);
 
             mdFrame.CreateTopView();
             var topEntities = mdFrame.TopEntities;
-            Utilities.CloningDxf(topEntities.OfType<Line>().ToList());
-
+            Utilities.CloningDxf(topEntities);
+            */
             MessageBox.Show("Operation completed");
 
             Show();
