@@ -107,7 +107,7 @@ namespace DoubleR_ES
             var hingeEntities = mdFrame.HingEntities;
             Utilities.CloningDxf(hingeEntities);
 
-            /*
+            
             mdFrame.CreateLockView();
             var lockEntities = mdFrame.LockEntities;
             Utilities.CloningDxf(lockEntities);
@@ -115,7 +115,7 @@ namespace DoubleR_ES
             mdFrame.CreateTopView();
             var topEntities = mdFrame.TopEntities;
             Utilities.CloningDxf(topEntities);
-            */
+            
             MessageBox.Show("Operation completed");
 
             Show();

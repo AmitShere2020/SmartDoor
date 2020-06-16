@@ -58,14 +58,15 @@ namespace DoubleR_ES.FrameModel
 
         protected void AssignTopDisplacement()
         {
-            var calc = (Utilities.InputData.Return1 - JsonData.TopViewDataList[0].BendAllowance) +
-                       (Utilities.InputData.Return2 - JsonData.TopViewDataList[8].BendAllowance) +
-                       (Utilities.InputData.Architrave1 - JsonData.TopViewDataList[1].BendAllowance) +
-                       (Utilities.InputData.Architrave2 - JsonData.TopViewDataList[7].BendAllowance) +
+            var calc = (Utilities.InputData.Return1 - JsonData.TopViewDataList[LineType.Return_1].BendAllowance) +
+                       (Utilities.InputData.Return2 - JsonData.TopViewDataList[LineType.Return_2].BendAllowance) +
+                       (Utilities.InputData.Architrave1 - JsonData.TopViewDataList[LineType.Architrave_1].BendAllowance) +
+                       (Utilities.InputData.Architrave2 - JsonData.TopViewDataList[LineType.Architrave_2].BendAllowance) +
                        (JsonData.TopViewData.ConstVLine3 + JsonData.TopViewData.ConstVLine3);
 
-            var totalHeight = Point3D.Distance(JsonData.TopViewDataList[0].Line.StartPoint,
-                                                     JsonData.TopViewDataList[8].Line.EndPoint);
+            int index = 0;
+            var totalHeight = Point3D.Distance(JsonData.TopViewDataList[index].Line.StartPoint,
+                                                     JsonData.TopViewDataList[JsonData.TopViewDataList.Count-1].Line.EndPoint);
 
             var minWidth = totalHeight - calc;
 

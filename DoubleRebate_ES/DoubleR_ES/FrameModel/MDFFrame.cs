@@ -410,8 +410,8 @@ namespace DoubleR_ES.FrameModel
             double H2 = 29;
 
             double basePointX = totalLength - Utilities.InputData.StrikeHeight - (L1 / 2.0);
-            double basePointY = (Utilities.InputData.Return1 - JsonData.BendDataList[0].BendAllowance) +
-                (Utilities.InputData.Architrave1 - JsonData.BendDataList[1].BendAllowance) - 3.9;
+            double basePointY = (Utilities.InputData.Return1 - JsonData.BendDataList[LineType.Return_1].BendAllowance) +
+                (Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance) - 3.9;
 
             Point3D p1 = new Point3D { X = basePointX, Y = basePointY };
             Point3D p2 = new Point3D { X = p1.X, Y = p1.Y + H1 };
@@ -454,14 +454,15 @@ namespace DoubleR_ES.FrameModel
 
         private void CreateMirrorProfile()
         {
-            var totalHeight = Point3D.Distance(JsonData.TopViewDataList[0].Line.StartPoint,
-                JsonData.TopViewDataList[8].Line.EndPoint);
+            int index = 0;
+            var totalHeight = Point3D.Distance(JsonData.TopViewDataList[index].Line.StartPoint,
+                JsonData.TopViewDataList[JsonData.TopViewDataList.Count-1].Line.EndPoint);
 
             Point3D bottomBasePoint = new Point3D(Utilities.InputData.RevealWidth / 2, 0, 0);
             Point3D topBasePoint = new Point3D(Utilities.InputData.RevealWidth / 2, totalHeight, 0);
 
-            Line topLine = new Line(JsonData.TopViewDataList[0].Line.StartPoint, bottomBasePoint);
-            Line bottomLine = new Line(JsonData.TopViewDataList[8].Line.EndPoint, topBasePoint);
+            Line topLine = new Line(JsonData.TopViewDataList[index].Line.StartPoint, bottomBasePoint);
+            Line bottomLine = new Line(JsonData.TopViewDataList[JsonData.TopViewDataList.Count-1].Line.EndPoint, topBasePoint);
             TopEntities.Add(topLine);
             TopEntities.Add(bottomLine);
 
