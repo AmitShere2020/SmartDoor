@@ -78,6 +78,7 @@ namespace DoubleR_ES.FrameModel
                 JsonData.BendDataList[4].Line,
                 JsonData.BendDataList[6].Line,
             };
+
             for (var i = 0; i < basePoints.Count; i++)
             {
                 var basePoint = basePoints[i];
