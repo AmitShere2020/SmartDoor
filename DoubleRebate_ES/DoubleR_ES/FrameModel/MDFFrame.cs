@@ -34,7 +34,7 @@ namespace DoubleR_ES.FrameModel
         {
             var requiredDat = JsonData.BendDataList.Where(item => item.ModifiedLengthTxt >= item.BendAllowance)
                 .ToList();
-            RequiredList = requiredDat;
+            RequiredList.AddRange(requiredDat);
 
             Utilities.TranslateEntities(requiredDat);
 
@@ -42,7 +42,7 @@ namespace DoubleR_ES.FrameModel
             HingEntities.AddRange(leftEntities);
         }
 
-        private List<Point3D> GetTabPoints(List<BendData> bendDatas)
+        private List<Point3D> GetTabPoints(BendCollection bendDatas)
         {
             double factor1 = Utilities.InputData.Rebate1 > 48 ? 16.5 : 15.5;
             double factor2 = Utilities.InputData.Rebate2 > 48 ? 16.5 : 15.5;
@@ -50,33 +50,45 @@ namespace DoubleR_ES.FrameModel
             double tabBase = JsonData.Tab.TabBase;
             List<Point3D> tabBasePointList = new List<Point3D>();
 
-            double newArchitraveX1 = bendDatas[2].Line.StartPoint.X;
-            double newArchitraveY1 = bendDatas[2].Line.StartPoint.Y;
+            double newArchitraveX1 = bendDatas[LineType.Architrave_1].Line.EndPoint.X;
+            double newArchitraveY1 = bendDatas[LineType.Architrave_1].Line.EndPoint.Y;
 
-            double newStopHgtX1 = bendDatas[4].Line.StartPoint.X;
-            double newStopHgtY1 = bendDatas[4].Line.StartPoint.Y;
+            double newStopHgtX1 = bendDatas[LineType.StopHgt_1].Line.EndPoint.X;
+            double newStopHgtY1 = bendDatas[LineType.StopHgt_1].Line.EndPoint.Y;
 
-            var newArchitraveX2 = bendDatas[bendDatas.Count - 2].Line.StartPoint.X;
-            var newRebateY2 = bendDatas[bendDatas.Count - 2].Line.StartPoint.Y;
+            double newArchitraveX2 = 0;
+            double newArchitraveY2 = 0;
+            if (bendDatas[LineType.Architrave_2]==null)
+            {
+                newArchitraveX2 = bendDatas[LineType.Rebate_2].Line.EndPoint.X;
+                newArchitraveY2 = bendDatas[LineType.Rebate_2].Line.EndPoint.Y;
+            }
+            else
+            {
+                newArchitraveX2 = bendDatas[LineType.Architrave_2].Line.StartPoint.X;
+                newArchitraveY2 = bendDatas[LineType.Architrave_2].Line.StartPoint.Y;
+            }
 
-            double newMidThroatDepth = (bendDatas[5].Line.StartPoint.Y - bendDatas[4].Line.StartPoint.Y) / 2;
+           
+
+            double newMidThroatDepth = (bendDatas[LineType.Throat].Line.EndPoint.Y - bendDatas[LineType.Throat].Line.StartPoint.Y) / 2;
 
             tabBasePointList.Add(new Point3D { X = newArchitraveX1, Y = newArchitraveY1 + factor1 });
             tabBasePointList.Add(new Point3D { X = newStopHgtX1, Y = newStopHgtY1 + newMidThroatDepth - tabBase / 2 });
-            tabBasePointList.Add(new Point3D { X = newArchitraveX2, Y = newRebateY2 - factor2 - tabBase });
+            tabBasePointList.Add(new Point3D { X = newArchitraveX2, Y = newArchitraveY2 - factor2 - tabBase });
 
             return tabBasePointList;
         }
 
         protected override void CreateTab()
         {
-            var basePoints = GetTabPoints(JsonData.BendDataList);
+            var basePoints = GetTabPoints(RequiredList);
             var tabList = new List<Entity>();
             var baseLines = new List<Line>()
             {
-                JsonData.BendDataList[2].Line,
-                JsonData.BendDataList[4].Line,
-                JsonData.BendDataList[6].Line,
+                JsonData.BendDataList[LineType.Rebate_1].Line,
+                JsonData.BendDataList[LineType.Throat].Line,
+                JsonData.BendDataList[LineType.Rebate_2].Line,
             };
 
             for (var i = 0; i < basePoints.Count; i++)
@@ -98,9 +110,9 @@ namespace DoubleR_ES.FrameModel
 
             }
 
-            var tab1Line = HingEntities[2];
-            var tab2Line = HingEntities[4];
-            var tab3Line = HingEntities[6];
+            var tab1Line = HingEntities.First(line=>((Line)line).StartPoint==baseLines[0].StartPoint && ((Line)line).EndPoint == baseLines[0].EndPoint);
+            var tab2Line = HingEntities.First(line => ((Line)line).StartPoint == baseLines[1].StartPoint && ((Line)line).EndPoint == baseLines[1].EndPoint);
+            var tab3Line = HingEntities.First(line => ((Line)line).StartPoint == baseLines[2].StartPoint && ((Line)line).EndPoint == baseLines[2].EndPoint);
             HingEntities.Remove(tab1Line);
             HingEntities.Remove(tab2Line);
             HingEntities.Remove(tab3Line);
@@ -110,15 +122,16 @@ namespace DoubleR_ES.FrameModel
 
         protected override void CreateRightProfile()
         {
-            var firstPoint = RequiredList[0].Line.StartPoint;
+            int firstIndex = 0;
+            var firstPoint = RequiredList[firstIndex].Line.StartPoint;
             var secondPoint = RequiredList[RequiredList.Count - 1].Line.EndPoint;
 
             var width = Point3D.Distance(firstPoint, secondPoint);
-            double totalLength1 = Utilities.InputData.RevealHeight + Utilities.InputData.Architrave1 - JsonData.BendDataList[1].BendAllowance;
-            double totalLength2 = Utilities.InputData.RevealHeight + Utilities.InputData.Architrave2 - JsonData.BendDataList[7].BendAllowance;
+            double totalLength1 = Utilities.InputData.RevealHeight + Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance;
+            double totalLength2 = Utilities.InputData.RevealHeight + Utilities.InputData.Architrave2 - JsonData.BendDataList[LineType.Architrave_2].BendAllowance;
 
             var thirdPoint = new Point3D(firstPoint.X + totalLength1, firstPoint.Y);
-            var fourthPoint = new Point3D(firstPoint.X + totalLength2, firstPoint.Y + width);
+            var fourthPoint = new Point3D(firstPoint.X + totalLength1, firstPoint.Y + width);
 
             Line firstLine = new Line(firstPoint, thirdPoint);
             Line secondLine = new Line(secondPoint, fourthPoint);
@@ -137,10 +150,10 @@ namespace DoubleR_ES.FrameModel
         {
             List<Point3D> holePointList = new List<Point3D>();
 
-            double circle1X = (Utilities.InputData.Architrave1 - JsonData.BendDataList[1].BendAllowance) + (Utilities.InputData.StopHgt1 - JsonData.BendDataList[3].BendAllowance) + 175; // New enhancement
+            double circle1X = (Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance) + (Utilities.InputData.StopHgt1 - JsonData.BendDataList[LineType.StopHgt_1].BendAllowance) + 175; // New enhancement
 
-            double circle1Y = (Utilities.InputData.Return1 - JsonData.BendDataList[0].BendAllowance) + (Utilities.InputData.Architrave1 - JsonData.BendDataList[1].BendAllowance) +
-                              (Utilities.InputData.Rebate1 - JsonData.BendDataList[2].BendAllowance) + ((Utilities.InputData.Throat - JsonData.BendDataList[4].BendAllowance) / 2.0);
+            double circle1Y = (Utilities.InputData.Return1 - JsonData.BendDataList[LineType.Return_1].BendAllowance) + (Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance) +
+                              (Utilities.InputData.Rebate1 - JsonData.BendDataList[LineType.Rebate_1].BendAllowance) + ((Utilities.InputData.Throat - JsonData.BendDataList[LineType.Throat].BendAllowance) / 2.0);
 
             double circle2X = circle1X + 525;
 
@@ -258,9 +271,9 @@ namespace DoubleR_ES.FrameModel
 
 
             // Hinge 1
-            double hinge1X = Utilities.InputData.Architrave1 - JsonData.BendDataList[1].BendAllowance + 230;
+            double hinge1X = Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance + 230;
 
-            double hinge1Y = (Utilities.InputData.Return1 - JsonData.BendDataList[0].BendAllowance) + (Utilities.InputData.Architrave1 - JsonData.BendDataList[1].BendAllowance) - factor1;
+            double hinge1Y = (Utilities.InputData.Return1 - JsonData.BendDataList[LineType.Return_1].BendAllowance) + (Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance) - factor1;
 
             //Hinge 2
             double hinge2X = length - hingeFeatBtmDistance - hingeFeatLength;
@@ -320,18 +333,18 @@ namespace DoubleR_ES.FrameModel
 
             if (Math.Abs(Utilities.InputData.Return1) > 0)
             {
-                btmY =  RequiredList[1].Line.EndPoint.Y + factor1 + (tabBase / 2) - (slotHeight / 2);
+                btmY =  RequiredList[LineType.Architrave_1].Line.EndPoint.Y + factor1 + (tabBase / 2) - (slotHeight / 2);
                
             }
             else
             {
-                btmY = RequiredList[0].Line.EndPoint.Y + factor1 + (tabBase / 2) - (slotHeight / 2);
+                btmY = RequiredList[LineType.Architrave_1].Line.EndPoint.Y + factor1 + (tabBase / 2) - (slotHeight / 2);
             }
 
 
             if (Math.Abs(Utilities.InputData.Return2) > 0 && Math.Abs(Utilities.InputData.Architrave2) > 0)
             {
-                topY = RequiredList[7].Line.StartPoint.Y - factor2 - (tabBase / 2) - (slotHeight / 2);
+                topY = RequiredList[LineType.Rebate_2].Line.EndPoint.Y - factor2 - (tabBase / 2) - (slotHeight / 2);
 
             }
             else

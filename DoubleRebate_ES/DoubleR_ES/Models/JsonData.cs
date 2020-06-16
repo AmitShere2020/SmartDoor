@@ -14,9 +14,9 @@ namespace DoubleR_ES.Models
     {
         public double GaugeSize { get; set; }
         public ProfileInfo ProfileInfo { get; set; }
-        public List<BendData> BendDataList { get; set; }
+        public BendCollection BendDataList { get; set; }
         public Tab Tab { get; set; }
-        public List<BendData> TopViewDataList { get; set; }
+        public BendCollection TopViewDataList { get; set; }
         public TopViewData TopViewData { get; set; }
         public ProfileType ProfileType { get; set; }
 
@@ -28,6 +28,8 @@ namespace DoubleR_ES.Models
         {
             ProfileType = profileType;
             inputData = Utilities.InputData;
+            BendDataList=new BendCollection();
+            TopViewDataList=new BendCollection();
         }
 
         private void ReadFile(string fileName)
@@ -126,8 +128,7 @@ namespace DoubleR_ES.Models
                     },
                 };
 
-                BendDataList = allowances;
-
+                BendDataList.AddRange(allowances);
                 double depth = inputData.Return1 + inputData.Architrave1 + inputData.Rebate1 + inputData.Throat + inputData.Rebate2 + inputData.Architrave2 + inputData.Return2;
 
                 ProfileInfo = new ProfileInfo
@@ -153,7 +154,7 @@ namespace DoubleR_ES.Models
                 var profileLines=profLines;
                 double angleFactor = Math.Cos((Math.PI * 45) / 180);
 
-                List<BendData> allowances = new List<BendData>()
+                List<BendData> allowances = new List<BendData>
                 {
                     new BendData()
                     {
@@ -211,7 +212,7 @@ namespace DoubleR_ES.Models
                     },
                 };
 
-                TopViewDataList = allowances; //Utilities.GetVertices(profLines);
+                TopViewDataList.AddRange(allowances); //Utilities.GetVertices(profLines);
 
 
                 TopViewData = new TopViewData

@@ -13,7 +13,7 @@ namespace DoubleR_ES.FrameModel
 
         public List<Entity> LockEntities { get; protected set; }
 
-        protected List<BendData> RequiredList { get; set; }
+        protected BendCollection RequiredList { get; set; }
 
         public JsonData JsonData { get; protected set; }
 
@@ -22,37 +22,38 @@ namespace DoubleR_ES.FrameModel
             HingEntities = new List<Entity>();
             TopEntities = new List<Entity>();
             LockEntities = new List<Entity>();
+            RequiredList = new BendCollection();
         }
 
         protected void AssignHingeDisplacements()
         {
             var allowances = JsonData.BendDataList;
-            allowances[0].ModifiedLengthTxt = Utilities.InputData.Return1;
-            allowances[0].Displacement = Utilities.InputData.Return1 - JsonData.ProfileInfo.Return1;
+            allowances[LineType.Return_1].ModifiedLengthTxt = Utilities.InputData.Return1;
+            allowances[LineType.Return_1].Displacement = Utilities.InputData.Return1 - JsonData.ProfileInfo.Return1;
 
-            allowances[1].ModifiedLengthTxt = Utilities.InputData.Architrave1;
-            allowances[1].Displacement = Utilities.InputData.Architrave1 - JsonData.ProfileInfo.Architrave1;
+            allowances[LineType.Architrave_1].ModifiedLengthTxt = Utilities.InputData.Architrave1;
+            allowances[LineType.Architrave_1].Displacement = Utilities.InputData.Architrave1 - JsonData.ProfileInfo.Architrave1;
 
-            allowances[2].ModifiedLengthTxt = Utilities.InputData.Rebate1;
-            allowances[2].Displacement = Utilities.InputData.Rebate1 - JsonData.ProfileInfo.Rebate1;
+            allowances[LineType.Rebate_1].ModifiedLengthTxt = Utilities.InputData.Rebate1;
+            allowances[LineType.Rebate_1].Displacement = Utilities.InputData.Rebate1 - JsonData.ProfileInfo.Rebate1;
 
-            allowances[3].ModifiedLengthTxt = Utilities.InputData.StopHgt1;
-            allowances[3].Displacement = Utilities.InputData.StopHgt1 - JsonData.ProfileInfo.StopHgt1;
+            allowances[LineType.StopHgt_1].ModifiedLengthTxt = Utilities.InputData.StopHgt1;
+            allowances[LineType.StopHgt_1].Displacement = Utilities.InputData.StopHgt1 - JsonData.ProfileInfo.StopHgt1;
 
-            allowances[4].ModifiedLengthTxt = Utilities.InputData.Throat;
-            allowances[4].Displacement = Utilities.InputData.Throat - JsonData.ProfileInfo.Throat;
+            allowances[LineType.Throat].ModifiedLengthTxt = Utilities.InputData.Throat;
+            allowances[LineType.Throat].Displacement = Utilities.InputData.Throat - JsonData.ProfileInfo.Throat;
 
-            allowances[5].ModifiedLengthTxt = Utilities.InputData.StopHgt2;
-            allowances[5].Displacement = Utilities.InputData.StopHgt2 - JsonData.ProfileInfo.StopHgt2;
+            allowances[LineType.StopHgt_2].ModifiedLengthTxt = Utilities.InputData.StopHgt2;
+            allowances[LineType.StopHgt_2].Displacement = Utilities.InputData.StopHgt2 - JsonData.ProfileInfo.StopHgt2;
 
-            allowances[6].ModifiedLengthTxt = Utilities.InputData.Rebate2;
-            allowances[6].Displacement = Utilities.InputData.Rebate2 - JsonData.ProfileInfo.Rebate2;
+            allowances[LineType.Rebate_2].ModifiedLengthTxt = Utilities.InputData.Rebate2;
+            allowances[LineType.Rebate_2].Displacement = Utilities.InputData.Rebate2 - JsonData.ProfileInfo.Rebate2;
 
-            allowances[7].ModifiedLengthTxt = Utilities.InputData.Architrave2;
-            allowances[7].Displacement = Utilities.InputData.Architrave2 - JsonData.ProfileInfo.Architrave2;
+            allowances[LineType.Architrave_2].ModifiedLengthTxt = Utilities.InputData.Architrave2;
+            allowances[LineType.Architrave_2].Displacement = Utilities.InputData.Architrave2 - JsonData.ProfileInfo.Architrave2;
 
-            allowances[8].ModifiedLengthTxt = Utilities.InputData.Return2;
-            allowances[8].Displacement = Utilities.InputData.Return2 - JsonData.ProfileInfo.Return2;
+            allowances[LineType.Return_2].ModifiedLengthTxt = Utilities.InputData.Return2;
+            allowances[LineType.Return_2].Displacement = Utilities.InputData.Return2 - JsonData.ProfileInfo.Return2;
         }
 
         protected void AssignTopDisplacement()
@@ -69,32 +70,32 @@ namespace DoubleR_ES.FrameModel
             var minWidth = totalHeight - calc;
 
             var allowances = JsonData.TopViewDataList;
-            allowances[0].ModifiedLengthTxt = Utilities.InputData.Return1;
-            allowances[0].Displacement = Utilities.InputData.Return1 - JsonData.ProfileInfo.Return1;
+            allowances[LineType.Return_1].ModifiedLengthTxt = Utilities.InputData.Return1;
+            allowances[LineType.Return_1].Displacement = Utilities.InputData.Return1 - JsonData.ProfileInfo.Return1;
 
-            allowances[1].ModifiedLengthTxt = Utilities.InputData.Architrave1;
-            allowances[1].Displacement = Utilities.InputData.Architrave1 - JsonData.ProfileInfo.Architrave1;
+            allowances[LineType.Architrave_1].ModifiedLengthTxt = Utilities.InputData.Architrave1;
+            allowances[LineType.Architrave_1].Displacement = Utilities.InputData.Architrave1 - JsonData.ProfileInfo.Architrave1;
 
-            allowances[2].ModifiedLengthTxt = JsonData.TopViewData.ConstVLine3;
-            allowances[2].Displacement = 0;
+            allowances[LineType.Rebate_1].ModifiedLengthTxt = JsonData.TopViewData.ConstVLine3;
+            allowances[LineType.Rebate_1].Displacement = 0;
 
-            allowances[3].ModifiedLengthTxt = JsonData.TopViewData.ConstHLine4;
-            allowances[3].Displacement = 0;
+            allowances[LineType.StopHgt_1].ModifiedLengthTxt = JsonData.TopViewData.ConstHLine4;
+            allowances[LineType.StopHgt_1].Displacement = 0;
 
-            allowances[4].ModifiedLengthTxt = JsonData.TopViewData.MidWidth;
-            allowances[4].Displacement = minWidth = JsonData.TopViewData.MidWidth;
+            allowances[LineType.Throat].ModifiedLengthTxt = JsonData.TopViewData.MidWidth;
+            allowances[LineType.Throat].Displacement = minWidth = JsonData.TopViewData.MidWidth;
 
-            allowances[5].ModifiedLengthTxt = JsonData.TopViewData.ConstHLine4;
-            allowances[5].Displacement = 0;
+            allowances[LineType.StopHgt_2].ModifiedLengthTxt = JsonData.TopViewData.ConstHLine4;
+            allowances[LineType.StopHgt_2].Displacement = 0;
 
-            allowances[6].ModifiedLengthTxt = JsonData.TopViewData.ConstVLine3;
-            allowances[6].Displacement = 0;
+            allowances[LineType.Rebate_2].ModifiedLengthTxt = JsonData.TopViewData.ConstVLine3;
+            allowances[LineType.Rebate_2].Displacement = 0;
 
-            allowances[7].ModifiedLengthTxt = Utilities.InputData.Architrave2;
-            allowances[7].Displacement = Utilities.InputData.Architrave2 - JsonData.ProfileInfo.Architrave2;
+            allowances[LineType.Architrave_2].ModifiedLengthTxt = Utilities.InputData.Architrave2;
+            allowances[LineType.Architrave_2].Displacement = Utilities.InputData.Architrave2 - JsonData.ProfileInfo.Architrave2;
 
-            allowances[8].ModifiedLengthTxt = Utilities.InputData.Return2;
-            allowances[8].Displacement = Utilities.InputData.Return2 - JsonData.ProfileInfo.Return2;
+            allowances[LineType.Return_2].ModifiedLengthTxt = Utilities.InputData.Return2;
+            allowances[LineType.Return_2].Displacement = Utilities.InputData.Return2 - JsonData.ProfileInfo.Return2;
         }
         
         public abstract void CreateTopView();

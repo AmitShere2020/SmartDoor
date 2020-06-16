@@ -268,10 +268,9 @@ namespace DoubleR_ES
         {
             if (!string.IsNullOrEmpty(txtThroat.Text) && !string.IsNullOrEmpty(txtReturn1.Text) &&
                 !string.IsNullOrEmpty(txtRebate1.Text))
-            {
-                var text1 = Convert.ToDouble(txtRebate1.Text) + Convert.ToDouble(txtRebate2.Text) +
-                            Convert.ToDouble(txtStopSection.Text) - Convert.ToDouble(txtReturn1.Text) -
-                            Convert.ToDouble(txtReturn2.Text);
+            { var text1 = Convert.ToDouble(txtRebate1.Text) + Convert.ToDouble(txtRebate2.Text) +
+                          Convert.ToDouble(txtStopSection.Text) - Convert.ToDouble(txtReturn1.Text) -
+                          Convert.ToDouble(txtReturn2.Text);
                 txtThroat.Text = text1.ToString(CultureInfo.InvariantCulture);
             }
         }
