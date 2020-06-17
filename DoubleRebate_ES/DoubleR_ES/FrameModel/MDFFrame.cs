@@ -150,10 +150,20 @@ namespace DoubleR_ES.FrameModel
         {
             List<Point3D> holePointList = new List<Point3D>();
 
-            double circle1X = (Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance) + (Utilities.InputData.StopHgt1 - JsonData.BendDataList[LineType.StopHgt_1].BendAllowance) + 175; // New enhancement
+            double return1 = 0;
+            if (Math.Abs(Utilities.InputData.Return1) > 0)
+            {
+                return1 = (Utilities.InputData.Return1 - JsonData.BendDataList[LineType.Return_1].BendAllowance);
+            }
 
-            double circle1Y = (Utilities.InputData.Return1 - JsonData.BendDataList[LineType.Return_1].BendAllowance) + (Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance) +
-                              (Utilities.InputData.Rebate1 - JsonData.BendDataList[LineType.Rebate_1].BendAllowance) + ((Utilities.InputData.Throat - JsonData.BendDataList[LineType.Throat].BendAllowance) / 2.0);
+            double architrave1 = Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance;
+            double stopHgt1 = Utilities.InputData.StopHgt1 - JsonData.BendDataList[LineType.StopHgt_1].BendAllowance;
+            double rebate1 = Utilities.InputData.Rebate1 - JsonData.BendDataList[LineType.Rebate_1].BendAllowance;
+            double throat = Utilities.InputData.Throat - JsonData.BendDataList[LineType.Throat].BendAllowance;
+            
+            double circle1X = architrave1 + stopHgt1 + 175; // New enhancement
+
+            double circle1Y = return1 + architrave1 + rebate1 + (throat / 2.0);
 
             double circle2X = circle1X + 525;
 
@@ -269,11 +279,19 @@ namespace DoubleR_ES.FrameModel
                     break;
             }
 
+            double return1 = 0;
+            if (Math.Abs(Utilities.InputData.Return1) > 0)
+            {
+                return1 = (Utilities.InputData.Return1 - JsonData.BendDataList[LineType.Return_1].BendAllowance);
+            }
+
+            double architrave1 = Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance;
+
 
             // Hinge 1
-            double hinge1X = Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance + 230;
+            double hinge1X = architrave1 + 230;
 
-            double hinge1Y = (Utilities.InputData.Return1 - JsonData.BendDataList[LineType.Return_1].BendAllowance) + (Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance) - factor1;
+            double hinge1Y = return1 + architrave1 - factor1;
 
             //Hinge 2
             double hinge2X = length - hingeFeatBtmDistance - hingeFeatLength;
@@ -352,12 +370,6 @@ namespace DoubleR_ES.FrameModel
                 topY = rightProfileTop.Y - factor2 - (tabBase / 2) - (slotHeight / 2);
             }
 
-
-            //double topY = (Utilities.InputData.Return2 - JsonData.BendDataList[JsonData.BendDataList.Count - 1].BendAllowance) +
-            //              (Utilities.InputData.Architrave2 - JsonData.BendDataList[JsonData.BendDataList.Count - 2].BendAllowance)
-            //              + factor2 + (tabBase / 2) + (slotHeight / 2);
-
-            //topY = width - topY;
             slotBasePointList.Add(new Point3D { X = btmX, Y = btmY });
             slotBasePointList.Add(new Point3D { X = topX, Y = topY });
 
@@ -449,7 +461,79 @@ namespace DoubleR_ES.FrameModel
 
         private void CreateTopSlots()
         {
+            double slotHeight = 20;
+            double slotWidth = 2.5;
+            int index = 0;
+            var totalHeight = Point3D.Distance(JsonData.TopViewDataList[index].Line.StartPoint,
+                JsonData.TopViewDataList[JsonData.TopViewDataList.Count - 1].Line.EndPoint);
 
+            var slotPoints = GetTopSlotPoints(totalHeight, JsonData.Tab.TabBase, slotHeight, slotWidth);
+
+            foreach (var point in slotPoints)
+            {
+                var slotLines = DrawPocketLines(point, slotHeight, slotWidth);
+                TopEntities.AddRange(slotLines);
+            }
+        }
+
+        private List<Point3D> GetTopSlotPoints(double totalWidth, double tabBase, double slotFeatLength, double slotFeatWidth)
+        {
+            List<Point3D> topSlotPointList = new List<Point3D>();
+            
+            double factor1 = Utilities.InputData.Rebate1 > 48 ? 16.5 : 15.5;
+            double factor2 = Utilities.InputData.Rebate2 > 48 ? 16.5 : 15.5;
+
+            double slotCenterDist1 = GetCenterDist(factor1, tabBase);
+
+            double slotCenterDist2 = GetCenterDist(factor2, tabBase);
+
+            double return1=0;
+            if (Math.Abs(Utilities.InputData.Return1) > 0)
+            {
+                 return1 = (Utilities.InputData.Return1 - JsonData.BendDataList[LineType.Return_1].BendAllowance);
+            }
+            
+
+            double return2=0;
+            if (Math.Abs(Utilities.InputData.Return1) > 0)
+            {
+                return2 = (Utilities.InputData.Return2 - JsonData.BendDataList[LineType.Return_2].BendAllowance);
+            }
+           
+
+            double architrave2=0;
+            if (Math.Abs(Utilities.InputData.Return1) > 0)
+            {
+                architrave2 = Utilities.InputData.Architrave2 - JsonData.BendDataList[LineType.Architrave_2].BendAllowance;
+            }
+            
+            double architrave1 = Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance;
+            double stopHgt1 = Utilities.InputData.StopHgt1 - JsonData.BendDataList[LineType.StopHgt_1].BendAllowance;
+
+            // Slot 1
+            double slot1X = architrave1 - slotFeatLength;
+            double slot1Y = return1 + architrave1 + slotCenterDist1 - (slotFeatWidth/2);
+
+            // Slot 2
+            double slot2X = architrave1 + stopHgt1 - slotFeatLength;
+            double slot2Y =(totalWidth-( return1 + architrave1 + return2+ architrave2 + slotCenterDist1+slotCenterDist2))/2;
+            slot2Y += slot1Y;
+
+            // Slot 3
+            double slot3X = architrave2 - slotFeatLength;
+            double slot3Y = totalWidth - (return2 + architrave2 + slotCenterDist2 +(slotFeatWidth / 2));
+            
+            topSlotPointList.Add(new Point3D { X = slot1X, Y = slot1Y });
+            topSlotPointList.Add(new Point3D { X = slot2X, Y = slot2Y });
+            topSlotPointList.Add(new Point3D { X = slot3X, Y = slot3Y });
+
+            return topSlotPointList;
+        }
+
+        public double GetCenterDist(double factor, double tabBase)
+        {
+            double cenDist = factor + (tabBase / 2);
+            return cenDist;
         }
 
         private void CreateMirrorProfile()
