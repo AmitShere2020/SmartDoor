@@ -14,7 +14,7 @@ namespace DoubleR_ES.Models
     {
         public double GaugeSize { get; set; }
         public ProfileInfo ProfileInfo { get; set; }
-        public BendCollection BendDataList { get; set; }
+        public BendCollection HingeDataList { get; set; }
         public Tab Tab { get; set; }
         public BendCollection TopViewDataList { get; set; }
         public TopViewData TopViewData { get; set; }
@@ -28,8 +28,8 @@ namespace DoubleR_ES.Models
         {
             ProfileType = profileType;
             inputData = Utilities.InputData;
-            BendDataList=new BendCollection();
-            TopViewDataList=new BendCollection();
+            HingeDataList = new BendCollection();
+            TopViewDataList = new BendCollection();
         }
 
         private void ReadFile(string fileName)
@@ -51,7 +51,8 @@ namespace DoubleR_ES.Models
 
             if (profLines.Count == 0)
             {
-                MessageBox.Show("Profile line are not availabel.Check std", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Profile line are not availabel.Check std", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
 
@@ -75,61 +76,62 @@ namespace DoubleR_ES.Models
                     new BendData()
                     {
                         Line = profileLines[0],
-                        BendAllowance = inputData.Return1-profileLines[0].Length(),
+                        BendAllowance = inputData.Return1 - profileLines[0].Length(),
                         LineType = LineType.Return_1
                     },
                     new BendData()
                     {
                         Line = profileLines[1],
-                        BendAllowance = inputData.Architrave1-profileLines[1].Length()*angleFactor,
+                        BendAllowance = inputData.Architrave1 - profileLines[1].Length() * angleFactor,
                         LineType = LineType.Architrave_1
                     },
                     new BendData()
                     {
                         Line = profileLines[2],
-                        BendAllowance = inputData.Rebate1-profileLines[2].Length(),
+                        BendAllowance = inputData.Rebate1 - profileLines[2].Length(),
                         LineType = LineType.Rebate_1
                     },
                     new BendData()
                     {
                         Line = profileLines[3],
-                        BendAllowance = inputData.StopHgt1-profileLines[3].Length(),
+                        BendAllowance = inputData.StopHgt1 - profileLines[3].Length(),
                         LineType = LineType.StopHgt_1
                     },
                     new BendData()
                     {
                         Line = profileLines[4],
-                        BendAllowance = inputData.Throat-profileLines[4].Length(),
+                        BendAllowance = inputData.Throat - profileLines[4].Length(),
                         LineType = LineType.Throat
                     },
                     new BendData()
                     {
                         Line = profileLines[5],
-                        BendAllowance = inputData.StopHgt2-profileLines[5].Length(),
+                        BendAllowance = inputData.StopHgt2 - profileLines[5].Length(),
                         LineType = LineType.StopHgt_2
                     },
                     new BendData()
                     {
                         Line = profileLines[6],
-                        BendAllowance = inputData.Rebate2-profileLines[6].Length(),
+                        BendAllowance = inputData.Rebate2 - profileLines[6].Length(),
                         LineType = LineType.Rebate_2
                     },
                     new BendData()
                     {
                         Line = profileLines[7],
-                        BendAllowance = inputData.Architrave2-profileLines[7].Length()*angleFactor,
+                        BendAllowance = inputData.Architrave2 - profileLines[7].Length() * angleFactor,
                         LineType = LineType.Architrave_2
                     },
                     new BendData()
                     {
                         Line = profileLines[8],
-                        BendAllowance = inputData.Return2-profileLines[8].Length(),
+                        BendAllowance = inputData.Return2 - profileLines[8].Length(),
                         LineType = LineType.Return_2
                     },
                 };
 
-                BendDataList.AddRange(allowances);
-                double depth = inputData.Return1 + inputData.Architrave1 + inputData.Rebate1 + inputData.Throat + inputData.Rebate2 + inputData.Architrave2 + inputData.Return2;
+                HingeDataList.AddRange(allowances);
+                double depth = inputData.Return1 + inputData.Architrave1 + inputData.Rebate1 + inputData.Throat +
+                               inputData.Rebate2 + inputData.Architrave2 + inputData.Return2;
 
                 ProfileInfo = new ProfileInfo
                 {
@@ -151,21 +153,21 @@ namespace DoubleR_ES.Models
             else
             {
                 /********** Top View Points*********/
-                var profileLines=profLines;
+                var profileLines = profLines;
                 double angleFactor = Math.Cos((Math.PI * 45) / 180);
 
-                List<BendData> allowances = new List<BendData>
+                BendCollection allowances = new BendCollection
                 {
                     new BendData()
                     {
                         Line = profileLines[0],
-                        BendAllowance = inputData.Return1-profileLines[0].Length(),
+                        BendAllowance = inputData.Return1 - profileLines[0].Length(),
                         LineType = LineType.Return_1
                     },
                     new BendData()
                     {
                         Line = profileLines[1],
-                        BendAllowance = inputData.Architrave1-profileLines[1].Length()*angleFactor,
+                        BendAllowance = inputData.Architrave1 - profileLines[1].Length() * angleFactor,
                         LineType = LineType.Architrave_1
                     },
                     new BendData()
@@ -180,12 +182,15 @@ namespace DoubleR_ES.Models
                         BendAllowance = 0,
                         LineType = LineType.StopHgt_1
                     },
+
                     new BendData()
                     {
                         Line = profileLines[4],
-                        BendAllowance = inputData.Throat-profileLines[4].Length(),
-                        LineType = LineType.Throat
+                        BendAllowance = 0, // this is not actual bend allowance
+                        // this is length of so called throat
+                        LineType = LineType.Throat // its length is depend on other parameters
                     },
+
                     new BendData()
                     {
                         Line = profileLines[5],
@@ -201,16 +206,28 @@ namespace DoubleR_ES.Models
                     new BendData()
                     {
                         Line = profileLines[7],
-                        BendAllowance = inputData.Architrave2-profileLines[7].Length()*angleFactor,
+                        BendAllowance = inputData.Architrave2 - profileLines[7].Length() * angleFactor,
                         LineType = LineType.Architrave_2
                     },
                     new BendData()
                     {
                         Line = profileLines[8],
-                        BendAllowance = inputData.Return2-profileLines[8].Length(),
+                        BendAllowance = inputData.Return2 - profileLines[8].Length(),
                         LineType = LineType.Return_2
                     },
                 };
+
+                //var throatData = new BendData()
+                //{
+                //    Line = profileLines[4],
+                //    BendAllowance = allowances[LineType.Rebate_2].Line.StartPoint.Y -   // this is not actual bend allowance
+                //                    allowances[LineType.Rebate_1].Line.EndPoint.Y,      // this is length of so called throat
+                //    LineType = LineType.Throat                                          // its length is depend on other parameters
+                //};
+
+                allowances[LineType.Throat].BendAllowance = allowances[LineType.Rebate_2].Line.StartPoint.Y -
+                                                            allowances[LineType.Rebate_1].Line.EndPoint.Y;
+
 
                 TopViewDataList.AddRange(allowances); //Utilities.GetVertices(profLines);
 
@@ -222,8 +239,6 @@ namespace DoubleR_ES.Models
                     MidWidth = profLines[4].Length(),
                 };
             }
-
-
         }
 
         private void SetLineTypes()
@@ -251,12 +266,13 @@ namespace DoubleR_ES.Models
                     modifiedList.Add(firstLine);
                     break;
                 }
+
                 var secondLine = lines[i + 1];
 
                 var firstAngle = Utility.RadToDeg(firstLine.Direction.AngleInXY);
                 var secondAngle = Utility.RadToDeg(secondLine.Direction.AngleInXY);
                 var abs = Math.Abs(firstAngle - secondAngle);
-                if (abs==0 || abs==180)
+                if (abs == 0 || abs == 180)
                 {
                     if (!startJoining)
                     {
@@ -283,12 +299,13 @@ namespace DoubleR_ES.Models
                     }
                 }
             }
+
             return modifiedList;
         }
 
         private List<Line> GetContinuity(Line currentLine, List<Line> lines)
         {
-            var listOfLines = new List<Line> { currentLine };
+            var listOfLines = new List<Line> {currentLine};
 
             for (var i = 0; i < lines.Count; i++)
             {
@@ -346,9 +363,9 @@ namespace DoubleR_ES.Models
 
             var firstLine = listOfLines.First(line => line.StartPoint.Equals(Point3D.Origin));
             var points = Utilities.GetVertices(listOfLines);
-            var clockwise = Utility.IsOrientedClockwise(points);// IsClockwisePolygon(points);
-            ICurve curve= UtilityEx.SmartAdd(listOfLines.OfType<ICurve>().ToList(), true);
-            
+            var clockwise = Utility.IsOrientedClockwise(points); // IsClockwisePolygon(points);
+            ICurve curve = UtilityEx.SmartAdd(listOfLines.OfType<ICurve>().ToList(), true);
+
             if (!clockwise)
                 listOfLines.Reverse();
 
@@ -360,6 +377,7 @@ namespace DoubleR_ES.Models
                 allSeqLines.RemoveAt(0);
                 allSeqLines.Add(lastLine);
             }
+
             OrderEntityList(allSeqLines);
 
             return allSeqLines;

@@ -29,7 +29,7 @@ namespace DoubleR_ES.FrameModel
 
         protected void AssignHingeDisplacements()
         {
-            var allowances = JsonData.BendDataList;
+            var allowances = JsonData.HingeDataList;
             allowances[LineType.Return_1].ModifiedLengthTxt = Utilities.InputData.Return1;
             allowances[LineType.Return_1].Displacement = Utilities.InputData.Return1 - JsonData.ProfileInfo.Return1;
 
@@ -86,7 +86,7 @@ namespace DoubleR_ES.FrameModel
             allowances[LineType.StopHgt_1].Displacement = 0;
 
             allowances[LineType.Throat].ModifiedLengthTxt = JsonData.TopViewData.MidWidth;
-            allowances[LineType.Throat].Displacement = minWidth = JsonData.TopViewData.MidWidth;
+            allowances[LineType.Throat].Displacement = minWidth - JsonData.TopViewData.MidWidth;
 
             allowances[LineType.StopHgt_2].ModifiedLengthTxt = JsonData.TopViewData.ConstHLine4;
             allowances[LineType.StopHgt_2].Displacement = 0;
