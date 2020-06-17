@@ -171,13 +171,13 @@ namespace DoubleR_ES.Models
                     new BendData()
                     {
                         Line = profileLines[2],
-                        BendAllowance = inputData.Rebate1-profileLines[2].Length(),
+                        BendAllowance = 0,
                         LineType = LineType.Rebate_1
                     },
                     new BendData()
                     {
                         Line = profileLines[3],
-                        BendAllowance = inputData.StopHgt1-profileLines[3].Length(),
+                        BendAllowance = 0,
                         LineType = LineType.StopHgt_1
                     },
                     new BendData()
@@ -189,13 +189,13 @@ namespace DoubleR_ES.Models
                     new BendData()
                     {
                         Line = profileLines[5],
-                        BendAllowance = inputData.StopHgt2-profileLines[5].Length(),
+                        BendAllowance = 0,
                         LineType = LineType.StopHgt_2
                     },
                     new BendData()
                     {
                         Line = profileLines[6],
-                        BendAllowance = inputData.Rebate2-profileLines[6].Length(),
+                        BendAllowance = 0,
                         LineType = LineType.Rebate_2
                     },
                     new BendData()

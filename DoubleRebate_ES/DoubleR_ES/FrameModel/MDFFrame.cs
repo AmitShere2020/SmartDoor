@@ -34,7 +34,8 @@ namespace DoubleR_ES.FrameModel
         {
             var requiredDat = JsonData.BendDataList.Where(item => item.ModifiedLengthTxt >= item.BendAllowance)
                 .ToList();
-            RequiredList.AddRange(requiredDat);
+
+            RequiredHingeList.AddRange(requiredDat);
 
             Utilities.TranslateEntities(requiredDat);
 
@@ -82,7 +83,7 @@ namespace DoubleR_ES.FrameModel
 
         protected override void CreateTab()
         {
-            var basePoints = GetTabPoints(RequiredList);
+            var basePoints = GetTabPoints(RequiredHingeList);
             var tabList = new List<Entity>();
             var baseLines = new List<Line>()
             {
@@ -123,8 +124,8 @@ namespace DoubleR_ES.FrameModel
         protected override void CreateRightProfile()
         {
             int firstIndex = 0;
-            var firstPoint = RequiredList[firstIndex].Line.StartPoint;
-            var secondPoint = RequiredList[RequiredList.Count - 1].Line.EndPoint;
+            var firstPoint = RequiredHingeList[firstIndex].Line.StartPoint;
+            var secondPoint = RequiredHingeList[RequiredHingeList.Count - 1].Line.EndPoint;
 
             var width = Point3D.Distance(firstPoint, secondPoint);
             double totalLength1 = Utilities.InputData.RevealHeight + Utilities.InputData.Architrave1 - JsonData.BendDataList[LineType.Architrave_1].BendAllowance;
@@ -351,18 +352,18 @@ namespace DoubleR_ES.FrameModel
 
             if (Math.Abs(Utilities.InputData.Return1) > 0)
             {
-                btmY =  RequiredList[LineType.Architrave_1].Line.EndPoint.Y + factor1 + (tabBase / 2) - (slotHeight / 2);
+                btmY =  RequiredHingeList[LineType.Architrave_1].Line.EndPoint.Y + factor1 + (tabBase / 2) - (slotHeight / 2);
                
             }
             else
             {
-                btmY = RequiredList[LineType.Architrave_1].Line.EndPoint.Y + factor1 + (tabBase / 2) - (slotHeight / 2);
+                btmY = RequiredHingeList[LineType.Architrave_1].Line.EndPoint.Y + factor1 + (tabBase / 2) - (slotHeight / 2);
             }
 
 
             if (Math.Abs(Utilities.InputData.Return2) > 0 && Math.Abs(Utilities.InputData.Architrave2) > 0)
             {
-                topY = RequiredList[LineType.Rebate_2].Line.EndPoint.Y - factor2 - (tabBase / 2) - (slotHeight / 2);
+                topY = RequiredHingeList[LineType.Rebate_2].Line.EndPoint.Y - factor2 - (tabBase / 2) - (slotHeight / 2);
 
             }
             else
@@ -454,8 +455,14 @@ namespace DoubleR_ES.FrameModel
         private void CreateTopLeftProfile()
         {
             AssignTopDisplacement();
-            Utilities.TranslateEntities(JsonData.TopViewDataList);
-            var leftEntities = JsonData.TopViewDataList.Select(item => item.Line).ToList();
+
+            var requiredDat = JsonData.TopViewDataList.Where(item => item.ModifiedLengthTxt >= item.BendAllowance)
+                .ToList();
+
+            RequiredTopList.AddRange(requiredDat);
+
+            Utilities.TranslateEntities(RequiredTopList);
+            var leftEntities = RequiredTopList.Select(item => item.Line).ToList();
             TopEntities.AddRange(leftEntities);
         }
 
@@ -464,8 +471,7 @@ namespace DoubleR_ES.FrameModel
             double slotHeight = 20;
             double slotWidth = 2.5;
             int index = 0;
-            var totalHeight = Point3D.Distance(JsonData.TopViewDataList[index].Line.StartPoint,
-                JsonData.TopViewDataList[JsonData.TopViewDataList.Count - 1].Line.EndPoint);
+            var totalHeight = Point3D.Distance(RequiredTopList[index].Line.StartPoint, RequiredTopList[RequiredTopList.Count-1].Line.EndPoint);
 
             var slotPoints = GetTopSlotPoints(totalHeight, JsonData.Tab.TabBase, slotHeight, slotWidth);
 
@@ -495,14 +501,14 @@ namespace DoubleR_ES.FrameModel
             
 
             double return2=0;
-            if (Math.Abs(Utilities.InputData.Return1) > 0)
+            if (Math.Abs(Utilities.InputData.Return2) > 0)
             {
                 return2 = (Utilities.InputData.Return2 - JsonData.BendDataList[LineType.Return_2].BendAllowance);
             }
            
 
             double architrave2=0;
-            if (Math.Abs(Utilities.InputData.Return1) > 0)
+            if (Math.Abs(Utilities.InputData.Architrave2) > 0)
             {
                 architrave2 = Utilities.InputData.Architrave2 - JsonData.BendDataList[LineType.Architrave_2].BendAllowance;
             }
@@ -511,17 +517,17 @@ namespace DoubleR_ES.FrameModel
             double stopHgt1 = Utilities.InputData.StopHgt1 - JsonData.BendDataList[LineType.StopHgt_1].BendAllowance;
 
             // Slot 1
-            double slot1X = architrave1 - slotFeatLength;
-            double slot1Y = return1 + architrave1 + slotCenterDist1 - (slotFeatWidth/2);
+            double slot1X = RequiredTopList[LineType.Architrave_1].Line.EndPoint.X - slotFeatWidth;
+            double slot1Y = RequiredTopList[LineType.Architrave_1].Line.EndPoint.Y + slotCenterDist1 - (slotFeatLength/2);
 
             // Slot 2
-            double slot2X = architrave1 + stopHgt1 - slotFeatLength;
+            double slot2X = RequiredTopList[LineType.StopHgt_1].Line.EndPoint.X - slotFeatWidth;
             double slot2Y =(totalWidth-( return1 + architrave1 + return2+ architrave2 + slotCenterDist1+slotCenterDist2))/2;
             slot2Y += slot1Y;
 
             // Slot 3
-            double slot3X = architrave2 - slotFeatLength;
-            double slot3Y = totalWidth - (return2 + architrave2 + slotCenterDist2 +(slotFeatWidth / 2));
+            double slot3X = RequiredTopList[LineType.Architrave_2].Line.StartPoint.X - slotFeatWidth;
+            double slot3Y = totalWidth - (RequiredTopList[LineType.Architrave_2].Line.StartPoint.Y + slotCenterDist2 +(slotFeatLength / 2));
             
             topSlotPointList.Add(new Point3D { X = slot1X, Y = slot1Y });
             topSlotPointList.Add(new Point3D { X = slot2X, Y = slot2Y });
@@ -539,14 +545,13 @@ namespace DoubleR_ES.FrameModel
         private void CreateMirrorProfile()
         {
             int index = 0;
-            var totalHeight = Point3D.Distance(JsonData.TopViewDataList[index].Line.StartPoint,
-                JsonData.TopViewDataList[JsonData.TopViewDataList.Count-1].Line.EndPoint);
+            var totalHeight = Point3D.Distance(RequiredTopList[index].Line.StartPoint, RequiredTopList[RequiredTopList.Count-1].Line.EndPoint);
 
-            Point3D bottomBasePoint = new Point3D(Utilities.InputData.RevealWidth / 2, 0, 0);
-            Point3D topBasePoint = new Point3D(Utilities.InputData.RevealWidth / 2, totalHeight, 0);
+            Point3D bottomBasePoint = new Point3D(Utilities.InputData.RevealWidth / 2, RequiredTopList[index].Line.StartPoint.Y, 0);
+            Point3D topBasePoint = new Point3D(Utilities.InputData.RevealWidth / 2, RequiredTopList[RequiredTopList.Count - 1].Line.EndPoint.Y, 0);
 
-            Line topLine = new Line(JsonData.TopViewDataList[index].Line.StartPoint, bottomBasePoint);
-            Line bottomLine = new Line(JsonData.TopViewDataList[JsonData.TopViewDataList.Count-1].Line.EndPoint, topBasePoint);
+            Line topLine = new Line(RequiredTopList[index].Line.StartPoint, bottomBasePoint);
+            Line bottomLine = new Line(RequiredTopList[RequiredTopList.Count-1].Line.EndPoint, topBasePoint);
             TopEntities.Add(topLine);
             TopEntities.Add(bottomLine);
 

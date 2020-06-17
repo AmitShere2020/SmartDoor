@@ -13,7 +13,8 @@ namespace DoubleR_ES.FrameModel
 
         public List<Entity> LockEntities { get; protected set; }
 
-        protected BendCollection RequiredList { get; set; }
+        protected BendCollection RequiredHingeList { get; set; }
+        protected BendCollection RequiredTopList { get; set; }
 
         public JsonData JsonData { get; protected set; }
 
@@ -22,7 +23,8 @@ namespace DoubleR_ES.FrameModel
             HingEntities = new List<Entity>();
             TopEntities = new List<Entity>();
             LockEntities = new List<Entity>();
-            RequiredList = new BendCollection();
+            RequiredHingeList = new BendCollection();
+            RequiredTopList = new BendCollection();
         }
 
         protected void AssignHingeDisplacements()

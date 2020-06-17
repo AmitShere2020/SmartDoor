@@ -331,7 +331,7 @@
             "37, 54.9, 0"
           ]
         },
-        "BendAllowance": 36.0,
+        "BendAllowance": 0.0,
         "ModifiedLengthTxt": 0.0,
         "LineType": 3,
         "Displacement": 0.0
@@ -357,7 +357,7 @@
             "23, 54.9, 0"
           ]
         },
-        "BendAllowance": 11.0,
+        "BendAllowance": 0.0,
         "ModifiedLengthTxt": 0.0,
         "LineType": 4,
         "Displacement": 0.0
@@ -409,7 +409,7 @@
             "37, 250.1, 0"
           ]
         },
-        "BendAllowance": 11.0,
+        "BendAllowance": 0.0,
         "ModifiedLengthTxt": 0.0,
         "LineType": 6,
         "Displacement": 0.0
@@ -435,7 +435,7 @@
             "37, 255.1, 0"
           ]
         },
-        "BendAllowance": 36.0,
+        "BendAllowance": 0.0,
         "ModifiedLengthTxt": 0.0,
         "LineType": 7,
         "Displacement": 0.0
