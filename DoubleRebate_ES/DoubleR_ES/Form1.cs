@@ -103,14 +103,14 @@ namespace DoubleR_ES
 
             Frame mdFrame = InitializeFrame(jsonData);
 
-            //mdFrame.CreateHingeView();
-            //var hingeEntities = mdFrame.HingEntities;
-            //Utilities.CloningDxf(hingeEntities);
+            mdFrame.CreateHingeView();
+            var hingeEntities = mdFrame.HingEntities;
+            Utilities.CloningDxf(hingeEntities);
 
 
-            //mdFrame.CreateLockView();
-            //var lockEntities = mdFrame.LockEntities;
-            //Utilities.CloningDxf(lockEntities);
+            mdFrame.CreateLockView();
+            var lockEntities = mdFrame.LockEntities;
+            Utilities.CloningDxf(lockEntities);
 
             mdFrame.CreateTopView();
             var topEntities = mdFrame.TopEntities;
@@ -250,6 +250,8 @@ namespace DoubleR_ES
             }
         }
 
+
+        // work on this
         private void chkSymmetry_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSymmetry.Checked) changeCheckButton();
