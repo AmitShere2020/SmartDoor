@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using devDept.Eyeshot.Entities;
 using devDept.Geometry;
+using DoubleR_ES.Json_Model;
 using DoubleR_ES.Models;
 
 namespace DoubleR_ES.FrameModel
@@ -14,9 +15,10 @@ namespace DoubleR_ES.FrameModel
         public List<Entity> LockEntities { get; protected set; }
 
         protected BendCollection RequiredHingeList { get; set; }
+
         protected BendCollection RequiredTopList { get; set; }
 
-        public JsonData JsonData { get; protected set; }
+        public MDFJson JsonData { get; protected set; }
 
         protected Frame()
         {
@@ -142,7 +144,6 @@ namespace DoubleR_ES.FrameModel
         
         public abstract void CreateHingeView();
         
-
         protected List<Line> DrawPocketLines(Point3D basePoint, double height, double width)
         {
             var p1 = new Point3D { X = basePoint.X, Y = basePoint.Y };

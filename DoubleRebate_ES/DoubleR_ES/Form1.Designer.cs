@@ -65,40 +65,39 @@
             this.txtReturn1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.comboClientType = new System.Windows.Forms.ComboBox();
             this.chkSymmetry = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.lblInputPath = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.comboProfileType = new System.Windows.Forms.ComboBox();
+            this.comboSubProfileType = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
-  
             // 
             // getBtn
             // 
             this.getBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.getBtn.Location = new System.Drawing.Point(117, 17);
-            this.getBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.getBtn.Location = new System.Drawing.Point(88, 14);
+            this.getBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.getBtn.Name = "getBtn";
-            this.getBtn.Size = new System.Drawing.Size(100, 37);
+            this.getBtn.Size = new System.Drawing.Size(75, 30);
             this.getBtn.TabIndex = 0;
             this.getBtn.Text = "Read DXF";
             this.getBtn.UseVisualStyleBackColor = true;
             this.getBtn.Click += new System.EventHandler(this.getBtn_Click);
-
             // 
             // btnCloning
             // 
             this.btnCloning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloning.Location = new System.Drawing.Point(443, 17);
-            this.btnCloning.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCloning.Location = new System.Drawing.Point(332, 14);
             this.btnCloning.Name = "btnCloning";
-            this.btnCloning.Size = new System.Drawing.Size(100, 37);
+            this.btnCloning.Size = new System.Drawing.Size(75, 30);
             this.btnCloning.TabIndex = 2;
             this.btnCloning.Text = "Create DXF";
             this.btnCloning.UseVisualStyleBackColor = true;
@@ -129,112 +128,113 @@
             this.panel2.Controls.Add(this.RevealHeight);
             this.panel2.Controls.Add(this.Quantity);
             this.panel2.Controls.Add(this.RevealWidth);
-            this.panel2.Location = new System.Drawing.Point(44, 25);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(20, 44);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(291, 520);
+            this.panel2.Size = new System.Drawing.Size(219, 423);
             this.panel2.TabIndex = 24;
             // 
             // cbStrikePrep
             // 
             this.cbStrikePrep.FormattingEnabled = true;
-            this.cbStrikePrep.Location = new System.Drawing.Point(172, 290);
-            this.cbStrikePrep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbStrikePrep.Location = new System.Drawing.Point(129, 236);
+            this.cbStrikePrep.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbStrikePrep.Name = "cbStrikePrep";
-            this.cbStrikePrep.Size = new System.Drawing.Size(100, 24);
+            this.cbStrikePrep.Size = new System.Drawing.Size(76, 21);
             this.cbStrikePrep.TabIndex = 4;
             // 
             // cbFrameFixing
             // 
             this.cbFrameFixing.FormattingEnabled = true;
-            this.cbFrameFixing.Location = new System.Drawing.Point(171, 380);
-            this.cbFrameFixing.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbFrameFixing.Location = new System.Drawing.Point(128, 309);
+            this.cbFrameFixing.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbFrameFixing.Name = "cbFrameFixing";
-            this.cbFrameFixing.Size = new System.Drawing.Size(100, 24);
+            this.cbFrameFixing.Size = new System.Drawing.Size(76, 21);
             this.cbFrameFixing.TabIndex = 4;
             // 
             // cbHingeQty
             // 
             this.cbHingeQty.FormattingEnabled = true;
-            this.cbHingeQty.Location = new System.Drawing.Point(172, 245);
-            this.cbHingeQty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbHingeQty.Location = new System.Drawing.Point(129, 199);
+            this.cbHingeQty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbHingeQty.Name = "cbHingeQty";
-            this.cbHingeQty.Size = new System.Drawing.Size(100, 24);
+            this.cbHingeQty.Size = new System.Drawing.Size(76, 21);
             this.cbHingeQty.TabIndex = 0;
             // 
             // cbHingePrep
             // 
             this.cbHingePrep.FormattingEnabled = true;
-            this.cbHingePrep.Location = new System.Drawing.Point(172, 199);
-            this.cbHingePrep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbHingePrep.Location = new System.Drawing.Point(129, 162);
+            this.cbHingePrep.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbHingePrep.Name = "cbHingePrep";
-            this.cbHingePrep.Size = new System.Drawing.Size(100, 24);
+            this.cbHingePrep.Size = new System.Drawing.Size(76, 21);
             this.cbHingePrep.TabIndex = 0;
             // 
             // cbGauge
             // 
             this.cbGauge.FormattingEnabled = true;
-            this.cbGauge.Location = new System.Drawing.Point(172, 65);
-            this.cbGauge.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbGauge.Location = new System.Drawing.Point(129, 53);
+            this.cbGauge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbGauge.Name = "cbGauge";
-            this.cbGauge.Size = new System.Drawing.Size(100, 24);
+            this.cbGauge.Size = new System.Drawing.Size(76, 21);
             this.cbGauge.TabIndex = 0;
             // 
             // txtFrameQty
             // 
-            this.txtFrameQty.Location = new System.Drawing.Point(172, 21);
-            this.txtFrameQty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFrameQty.Location = new System.Drawing.Point(129, 17);
+            this.txtFrameQty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFrameQty.Name = "txtFrameQty";
-            this.txtFrameQty.Size = new System.Drawing.Size(100, 22);
+            this.txtFrameQty.Size = new System.Drawing.Size(76, 20);
             this.txtFrameQty.TabIndex = 0;
             // 
             // txtTabTop
             // 
-            this.txtTabTop.Location = new System.Drawing.Point(172, 475);
-            this.txtTabTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTabTop.Location = new System.Drawing.Point(129, 386);
+            this.txtTabTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTabTop.Name = "txtTabTop";
-            this.txtTabTop.Size = new System.Drawing.Size(100, 22);
+            this.txtTabTop.Size = new System.Drawing.Size(76, 20);
             this.txtTabTop.TabIndex = 0;
             // 
             // txtTabBase
             // 
-            this.txtTabBase.Location = new System.Drawing.Point(172, 428);
-            this.txtTabBase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTabBase.Location = new System.Drawing.Point(129, 348);
+            this.txtTabBase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTabBase.Name = "txtTabBase";
-            this.txtTabBase.Size = new System.Drawing.Size(100, 22);
+            this.txtTabBase.Size = new System.Drawing.Size(76, 20);
             this.txtTabBase.TabIndex = 0;
             // 
             // txtRevealHgt
             // 
-            this.txtRevealHgt.Location = new System.Drawing.Point(172, 111);
-            this.txtRevealHgt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRevealHgt.Location = new System.Drawing.Point(129, 90);
+            this.txtRevealHgt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRevealHgt.Name = "txtRevealHgt";
-            this.txtRevealHgt.Size = new System.Drawing.Size(100, 22);
+            this.txtRevealHgt.Size = new System.Drawing.Size(76, 20);
             this.txtRevealHgt.TabIndex = 0;
             // 
             // txtRevealWidth
             // 
-            this.txtRevealWidth.Location = new System.Drawing.Point(172, 155);
-            this.txtRevealWidth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRevealWidth.Location = new System.Drawing.Point(129, 126);
+            this.txtRevealWidth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRevealWidth.Name = "txtRevealWidth";
-            this.txtRevealWidth.Size = new System.Drawing.Size(100, 22);
+            this.txtRevealWidth.Size = new System.Drawing.Size(76, 20);
             this.txtRevealWidth.TabIndex = 0;
             // 
             // txtStrikeHgt
             // 
-            this.txtStrikeHgt.Location = new System.Drawing.Point(172, 336);
-            this.txtStrikeHgt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtStrikeHgt.Location = new System.Drawing.Point(129, 273);
+            this.txtStrikeHgt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtStrikeHgt.Name = "txtStrikeHgt";
-            this.txtStrikeHgt.Size = new System.Drawing.Size(100, 22);
+            this.txtStrikeHgt.Size = new System.Drawing.Size(76, 20);
             this.txtStrikeHgt.TabIndex = 0;
             // 
             // StrikeHeight
             // 
             this.StrikeHeight.AutoSize = true;
             this.StrikeHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.StrikeHeight.Location = new System.Drawing.Point(24, 337);
+            this.StrikeHeight.Location = new System.Drawing.Point(18, 274);
+            this.StrikeHeight.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.StrikeHeight.Name = "StrikeHeight";
-            this.StrikeHeight.Size = new System.Drawing.Size(106, 20);
+            this.StrikeHeight.Size = new System.Drawing.Size(84, 16);
             this.StrikeHeight.TabIndex = 33;
             this.StrikeHeight.Text = "Strike Height";
             // 
@@ -242,9 +242,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label2.Location = new System.Drawing.Point(24, 202);
+            this.label2.Location = new System.Drawing.Point(18, 164);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 20);
+            this.label2.Size = new System.Drawing.Size(76, 16);
             this.label2.TabIndex = 28;
             this.label2.Text = "Hinge Prep";
             // 
@@ -252,9 +253,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label3.Location = new System.Drawing.Point(23, 293);
+            this.label3.Location = new System.Drawing.Point(17, 238);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 20);
+            this.label3.Size = new System.Drawing.Size(74, 16);
             this.label3.TabIndex = 29;
             this.label3.Text = "Strike Prep";
             // 
@@ -262,9 +264,10 @@
             // 
             this.Gauge.AutoSize = true;
             this.Gauge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.Gauge.Location = new System.Drawing.Point(23, 68);
+            this.Gauge.Location = new System.Drawing.Point(17, 55);
+            this.Gauge.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Gauge.Name = "Gauge";
-            this.Gauge.Size = new System.Drawing.Size(58, 20);
+            this.Gauge.Size = new System.Drawing.Size(49, 16);
             this.Gauge.TabIndex = 28;
             this.Gauge.Text = "Gauge";
             // 
@@ -272,9 +275,10 @@
             // 
             this.FrameFixed.AutoSize = true;
             this.FrameFixed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.FrameFixed.Location = new System.Drawing.Point(23, 383);
+            this.FrameFixed.Location = new System.Drawing.Point(17, 311);
+            this.FrameFixed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FrameFixed.Name = "FrameFixed";
-            this.FrameFixed.Size = new System.Drawing.Size(106, 20);
+            this.FrameFixed.Size = new System.Drawing.Size(85, 16);
             this.FrameFixed.TabIndex = 29;
             this.FrameFixed.Text = "Frame Fixing";
             // 
@@ -282,9 +286,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label1.Location = new System.Drawing.Point(23, 22);
+            this.label1.Location = new System.Drawing.Point(17, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 20);
+            this.label1.Size = new System.Drawing.Size(70, 16);
             this.label1.TabIndex = 30;
             this.label1.Text = "Frame Qty";
             // 
@@ -292,9 +297,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label5.Location = new System.Drawing.Point(23, 476);
+            this.label5.Location = new System.Drawing.Point(17, 387);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 20);
+            this.label5.Size = new System.Drawing.Size(61, 16);
             this.label5.TabIndex = 30;
             this.label5.Text = "Tab Top";
             // 
@@ -302,9 +308,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label4.Location = new System.Drawing.Point(23, 430);
+            this.label4.Location = new System.Drawing.Point(17, 349);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 20);
+            this.label4.Size = new System.Drawing.Size(68, 16);
             this.label4.TabIndex = 30;
             this.label4.Text = "Tab Base";
             // 
@@ -312,9 +319,10 @@
             // 
             this.RevealHeight.AutoSize = true;
             this.RevealHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.RevealHeight.Location = new System.Drawing.Point(23, 112);
+            this.RevealHeight.Location = new System.Drawing.Point(17, 91);
+            this.RevealHeight.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.RevealHeight.Name = "RevealHeight";
-            this.RevealHeight.Size = new System.Drawing.Size(114, 20);
+            this.RevealHeight.Size = new System.Drawing.Size(94, 16);
             this.RevealHeight.TabIndex = 30;
             this.RevealHeight.Text = "Reveal Height";
             // 
@@ -322,9 +330,10 @@
             // 
             this.Quantity.AutoSize = true;
             this.Quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.Quantity.Location = new System.Drawing.Point(24, 247);
+            this.Quantity.Location = new System.Drawing.Point(18, 201);
+            this.Quantity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Quantity.Name = "Quantity";
-            this.Quantity.Size = new System.Drawing.Size(84, 20);
+            this.Quantity.Size = new System.Drawing.Size(67, 16);
             this.Quantity.TabIndex = 31;
             this.Quantity.Text = "Hinge Qty";
             // 
@@ -332,94 +341,95 @@
             // 
             this.RevealWidth.AutoSize = true;
             this.RevealWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.RevealWidth.Location = new System.Drawing.Point(24, 156);
+            this.RevealWidth.Location = new System.Drawing.Point(18, 127);
+            this.RevealWidth.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.RevealWidth.Name = "RevealWidth";
-            this.RevealWidth.Size = new System.Drawing.Size(108, 20);
+            this.RevealWidth.Size = new System.Drawing.Size(89, 16);
             this.RevealWidth.TabIndex = 32;
             this.RevealWidth.Text = "Reveal Width";
             // 
             // txtStopSection
             // 
             this.txtStopSection.Enabled = false;
-            this.txtStopSection.Location = new System.Drawing.Point(267, 68);
-            this.txtStopSection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtStopSection.Location = new System.Drawing.Point(200, 55);
+            this.txtStopSection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtStopSection.Name = "txtStopSection";
-            this.txtStopSection.Size = new System.Drawing.Size(100, 22);
+            this.txtStopSection.Size = new System.Drawing.Size(76, 20);
             this.txtStopSection.TabIndex = 17;
             // 
             // txtStopHeight2
             // 
-            this.txtStopHeight2.Location = new System.Drawing.Point(520, 119);
-            this.txtStopHeight2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtStopHeight2.Location = new System.Drawing.Point(390, 97);
+            this.txtStopHeight2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtStopHeight2.Name = "txtStopHeight2";
-            this.txtStopHeight2.Size = new System.Drawing.Size(68, 22);
+            this.txtStopHeight2.Size = new System.Drawing.Size(52, 20);
             this.txtStopHeight2.TabIndex = 20;
             // 
             // txtRebate2
             // 
-            this.txtRebate2.Location = new System.Drawing.Point(451, 69);
-            this.txtRebate2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRebate2.Location = new System.Drawing.Point(338, 56);
+            this.txtRebate2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRebate2.Name = "txtRebate2";
-            this.txtRebate2.Size = new System.Drawing.Size(69, 22);
+            this.txtRebate2.Size = new System.Drawing.Size(53, 20);
             this.txtRebate2.TabIndex = 19;
             this.txtRebate2.TextChanged += new System.EventHandler(this.txtRebate2_TextChanged);
             // 
             // txtArchitrave2
             // 
-            this.txtArchitrave2.Location = new System.Drawing.Point(520, 207);
-            this.txtArchitrave2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtArchitrave2.Location = new System.Drawing.Point(390, 168);
+            this.txtArchitrave2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtArchitrave2.Name = "txtArchitrave2";
-            this.txtArchitrave2.Size = new System.Drawing.Size(68, 22);
+            this.txtArchitrave2.Size = new System.Drawing.Size(52, 20);
             this.txtArchitrave2.TabIndex = 18;
             // 
             // txtArchitrave1
             // 
-            this.txtArchitrave1.Location = new System.Drawing.Point(53, 207);
-            this.txtArchitrave1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtArchitrave1.Location = new System.Drawing.Point(40, 168);
+            this.txtArchitrave1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtArchitrave1.Name = "txtArchitrave1";
-            this.txtArchitrave1.Size = new System.Drawing.Size(61, 22);
+            this.txtArchitrave1.Size = new System.Drawing.Size(47, 20);
             this.txtArchitrave1.TabIndex = 14;
             // 
             // txtRebate1
             // 
-            this.txtRebate1.Location = new System.Drawing.Point(125, 68);
-            this.txtRebate1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRebate1.Location = new System.Drawing.Point(94, 55);
+            this.txtRebate1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRebate1.Name = "txtRebate1";
-            this.txtRebate1.Size = new System.Drawing.Size(65, 22);
+            this.txtRebate1.Size = new System.Drawing.Size(50, 20);
             this.txtRebate1.TabIndex = 16;
             this.txtRebate1.TextChanged += new System.EventHandler(this.txtRebate1_TextChanged);
             // 
             // txtStopHeight1
             // 
-            this.txtStopHeight1.Location = new System.Drawing.Point(53, 119);
-            this.txtStopHeight1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtStopHeight1.Location = new System.Drawing.Point(40, 97);
+            this.txtStopHeight1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtStopHeight1.Name = "txtStopHeight1";
-            this.txtStopHeight1.Size = new System.Drawing.Size(61, 22);
+            this.txtStopHeight1.Size = new System.Drawing.Size(47, 20);
             this.txtStopHeight1.TabIndex = 15;
             // 
             // txtReturn2
             // 
-            this.txtReturn2.Location = new System.Drawing.Point(451, 289);
-            this.txtReturn2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtReturn2.Location = new System.Drawing.Point(338, 235);
+            this.txtReturn2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtReturn2.Name = "txtReturn2";
-            this.txtReturn2.Size = new System.Drawing.Size(69, 22);
+            this.txtReturn2.Size = new System.Drawing.Size(53, 20);
             this.txtReturn2.TabIndex = 13;
             this.txtReturn2.TextChanged += new System.EventHandler(this.txtReturn2_TextChanged);
             // 
             // txtThroat
             // 
-            this.txtThroat.Location = new System.Drawing.Point(267, 289);
-            this.txtThroat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtThroat.Location = new System.Drawing.Point(200, 235);
+            this.txtThroat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtThroat.Name = "txtThroat";
-            this.txtThroat.Size = new System.Drawing.Size(100, 22);
+            this.txtThroat.Size = new System.Drawing.Size(76, 20);
             this.txtThroat.TabIndex = 12;
             // 
             // txtReturn1
             // 
-            this.txtReturn1.Location = new System.Drawing.Point(125, 289);
-            this.txtReturn1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtReturn1.Location = new System.Drawing.Point(94, 235);
+            this.txtReturn1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtReturn1.Name = "txtReturn1";
-            this.txtReturn1.Size = new System.Drawing.Size(65, 22);
+            this.txtReturn1.Size = new System.Drawing.Size(50, 20);
             this.txtReturn1.TabIndex = 11;
             this.txtReturn1.TextChanged += new System.EventHandler(this.txtReturn1_TextChanged);
             // 
@@ -427,10 +437,10 @@
             // 
             this.pictureBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(100, 76);
+            this.pictureBox1.Location = new System.Drawing.Point(75, 62);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(439, 215);
+            this.pictureBox1.Size = new System.Drawing.Size(329, 175);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
@@ -438,9 +448,6 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-#if Admin
-            this.panel3.Controls.Add(this.comboProfileType);
-#endif
             this.panel3.Controls.Add(this.chkSymmetry);
             this.panel3.Controls.Add(this.txtStopHeight2);
             this.panel3.Controls.Add(this.txtRebate2);
@@ -453,19 +460,27 @@
             this.panel3.Controls.Add(this.txtThroat);
             this.panel3.Controls.Add(this.txtReturn1);
             this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Location = new System.Drawing.Point(341, 25);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(243, 44);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(641, 339);
+            this.panel3.Size = new System.Drawing.Size(481, 276);
             this.panel3.TabIndex = 25;
+            // 
+            // comboClientType
+            // 
+            this.comboClientType.FormattingEnabled = true;
+            this.comboClientType.Location = new System.Drawing.Point(23, 11);
+            this.comboClientType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboClientType.Name = "comboClientType";
+            this.comboClientType.Size = new System.Drawing.Size(92, 21);
+            this.comboClientType.TabIndex = 22;
             // 
             // chkSymmetry
             // 
             this.chkSymmetry.AutoSize = true;
-            this.chkSymmetry.Location = new System.Drawing.Point(508, 21);
-            this.chkSymmetry.Margin = new System.Windows.Forms.Padding(4);
+            this.chkSymmetry.Location = new System.Drawing.Point(381, 17);
             this.chkSymmetry.Name = "chkSymmetry";
-            this.chkSymmetry.Size = new System.Drawing.Size(92, 21);
+            this.chkSymmetry.Size = new System.Drawing.Size(71, 17);
             this.chkSymmetry.TabIndex = 21;
             this.chkSymmetry.Text = "Symmetry";
             this.chkSymmetry.UseVisualStyleBackColor = true;
@@ -474,23 +489,19 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-#if Admin
             this.panel1.Controls.Add(this.getBtn);
-#endif
             this.panel1.Controls.Add(this.btnCloning);
-            this.panel1.Location = new System.Drawing.Point(341, 386);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(243, 338);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(641, 67);
+            this.panel1.Size = new System.Drawing.Size(481, 55);
             this.panel1.TabIndex = 26;
             // 
             // btnBrowse
             // 
             this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBrowse.Location = new System.Drawing.Point(17, 10);
-            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBrowse.Location = new System.Drawing.Point(13, 8);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(100, 37);
+            this.btnBrowse.Size = new System.Drawing.Size(75, 30);
             this.btnBrowse.TabIndex = 27;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -500,10 +511,9 @@
             // 
             this.lblInputPath.AutoSize = true;
             this.lblInputPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblInputPath.Location = new System.Drawing.Point(133, 18);
-            this.lblInputPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblInputPath.Location = new System.Drawing.Point(100, 15);
             this.lblInputPath.Name = "lblInputPath";
-            this.lblInputPath.Size = new System.Drawing.Size(53, 20);
+            this.lblInputPath.Size = new System.Drawing.Size(45, 16);
             this.lblInputPath.TabIndex = 28;
             this.lblInputPath.Text = "label1";
             // 
@@ -511,33 +521,43 @@
             // 
             this.panel4.Controls.Add(this.btnBrowse);
             this.panel4.Controls.Add(this.lblInputPath);
-            this.panel4.Location = new System.Drawing.Point(341, 491);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Location = new System.Drawing.Point(243, 423);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(641, 54);
+            this.panel4.Size = new System.Drawing.Size(481, 44);
             this.panel4.TabIndex = 29;
-
             // 
             // comboProfileType
             // 
             this.comboProfileType.FormattingEnabled = true;
-            this.comboProfileType.Location = new System.Drawing.Point(37, 21);
+            this.comboProfileType.Location = new System.Drawing.Point(243, 11);
             this.comboProfileType.Name = "comboProfileType";
-            this.comboProfileType.Size = new System.Drawing.Size(121, 24);
-            this.comboProfileType.TabIndex = 22;
-
+            this.comboProfileType.Size = new System.Drawing.Size(121, 21);
+            this.comboProfileType.TabIndex = 30;
+            this.comboProfileType.SelectedIndexChanged += new System.EventHandler(this.comboProfileType_SelectedIndexChanged);
+            // 
+            // comboSubProfileType
+            // 
+            this.comboSubProfileType.FormattingEnabled = true;
+            this.comboSubProfileType.Location = new System.Drawing.Point(389, 11);
+            this.comboSubProfileType.Name = "comboSubProfileType";
+            this.comboSubProfileType.Size = new System.Drawing.Size(121, 21);
+            this.comboSubProfileType.TabIndex = 30;
+            this.comboSubProfileType.SelectedIndexChanged += new System.EventHandler(this.comboSubProfileType_SelectedIndexChanged);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1015, 561);
+            this.ClientSize = new System.Drawing.Size(761, 485);
+            this.Controls.Add(this.comboSubProfileType);
+            this.Controls.Add(this.comboProfileType);
+            this.Controls.Add(this.comboClientType);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -596,7 +616,9 @@
         public System.Windows.Forms.TextBox txtTabBase;
         protected System.Windows.Forms.Label label5;
         protected System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboClientType;
         private System.Windows.Forms.ComboBox comboProfileType;
+        private System.Windows.Forms.ComboBox comboSubProfileType;
     }
 }
 

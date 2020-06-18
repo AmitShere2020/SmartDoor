@@ -1,6 +1,6 @@
 ﻿namespace DoubleR_ES.Models
 {
-    internal class InputData:ProfileBase
+    public class InputData:ProfileBase
     {
         public double StopSection { get; set; }
         public int FrameQty { get; set; }

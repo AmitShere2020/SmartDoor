@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DoubleR_ES.Json_Model;
 
 namespace DoubleR_ES.FrameModel
 {
     public class ADLFrame:Frame
     {
-        public ADLFrame(JsonData jsonData)
+        public ADLFrame(MDFJson jsonData)
         {
             JsonData = jsonData;
         }

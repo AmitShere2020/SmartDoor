@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using devDept.Eyeshot.Entities;
 using devDept.Geometry;
+using DoubleR_ES.Json_Model;
 using DoubleR_ES.Models;
 
 namespace DoubleR_ES.FrameModel
@@ -10,9 +11,9 @@ namespace DoubleR_ES.FrameModel
     public class MDFFrame : Frame
     {
         private Point3D rightProfileTop;
-        private Point3D rightProfileBottom;
+       // private Point3D rightProfileBottom;
 
-        public MDFFrame(JsonData jsonData)
+        public MDFFrame(MDFJson jsonData)
         {
             JsonData = jsonData;
             AssignHingeDisplacements();
@@ -43,36 +44,36 @@ namespace DoubleR_ES.FrameModel
             HingEntities.AddRange(leftEntities);
         }
 
-        private List<Point3D> GetTabPoints(BendCollection bendDatas)
+        private List<Point3D> GetTabPoints(BendCollection bendData)
         {
             double factor1 = Utilities.InputData.Rebate1 > 48 ? 16.5 : 15.5;
             double factor2 = Utilities.InputData.Rebate2 > 48 ? 16.5 : 15.5;
 
-            double tabBase = JsonData.Tab.TabBase;
+            double tabBase = JsonData.TabData.TabBase;
             List<Point3D> tabBasePointList = new List<Point3D>();
 
-            double newArchitraveX1 = bendDatas[LineType.Architrave_1].Line.EndPoint.X;
-            double newArchitraveY1 = bendDatas[LineType.Architrave_1].Line.EndPoint.Y;
+            double newArchitraveX1 = bendData[LineType.Architrave_1].Line.EndPoint.X;
+            double newArchitraveY1 = bendData[LineType.Architrave_1].Line.EndPoint.Y;
 
-            double newStopHgtX1 = bendDatas[LineType.StopHgt_1].Line.EndPoint.X;
-            double newStopHgtY1 = bendDatas[LineType.StopHgt_1].Line.EndPoint.Y;
+            double newStopHgtX1 = bendData[LineType.StopHgt_1].Line.EndPoint.X;
+            double newStopHgtY1 = bendData[LineType.StopHgt_1].Line.EndPoint.Y;
 
             double newArchitraveX2 = 0;
             double newArchitraveY2 = 0;
-            if (bendDatas[LineType.Architrave_2]==null)
+            if (bendData[LineType.Architrave_2]==null)
             {
-                newArchitraveX2 = bendDatas[LineType.Rebate_2].Line.EndPoint.X;
-                newArchitraveY2 = bendDatas[LineType.Rebate_2].Line.EndPoint.Y;
+                newArchitraveX2 = bendData[LineType.Rebate_2].Line.EndPoint.X;
+                newArchitraveY2 = bendData[LineType.Rebate_2].Line.EndPoint.Y;
             }
             else
             {
-                newArchitraveX2 = bendDatas[LineType.Architrave_2].Line.StartPoint.X;
-                newArchitraveY2 = bendDatas[LineType.Architrave_2].Line.StartPoint.Y;
+                newArchitraveX2 = bendData[LineType.Architrave_2].Line.StartPoint.X;
+                newArchitraveY2 = bendData[LineType.Architrave_2].Line.StartPoint.Y;
             }
 
            
 
-            double newMidThroatDepth = (bendDatas[LineType.Throat].Line.EndPoint.Y - bendDatas[LineType.Throat].Line.StartPoint.Y) / 2;
+            double newMidThroatDepth = (bendData[LineType.Throat].Line.EndPoint.Y - bendData[LineType.Throat].Line.StartPoint.Y) / 2;
 
             tabBasePointList.Add(new Point3D { X = newArchitraveX1, Y = newArchitraveY1 + factor1 });
             tabBasePointList.Add(new Point3D { X = newStopHgtX1, Y = newStopHgtY1 + newMidThroatDepth - tabBase / 2 });
@@ -95,12 +96,12 @@ namespace DoubleR_ES.FrameModel
             for (var i = 0; i < basePoints.Count; i++)
             {
                 var basePoint = basePoints[i];
-                var diffY = (JsonData.Tab.TabBase - JsonData.Tab.TabTop) / 2;
+                var diffY = (JsonData.TabData.TabBase - JsonData.TabData.TabTop) / 2;
 
                 var p1 = new Point3D { X = basePoint.X, Y = basePoint.Y };
-                var p2 = new Point3D { X = p1.X - JsonData.Tab.TabBase, Y = p1.Y + diffY };
-                var p3 = new Point3D { X = p2.X, Y = p2.Y + JsonData.Tab.TabTop };
-                var p4 = new Point3D { X = p1.X, Y = p1.Y + JsonData.Tab.TabBase };
+                var p2 = new Point3D { X = p1.X - JsonData.TabData.TabBase, Y = p1.Y + diffY };
+                var p3 = new Point3D { X = p2.X, Y = p2.Y + JsonData.TabData.TabTop };
+                var p4 = new Point3D { X = p1.X, Y = p1.Y + JsonData.TabData.TabBase };
 
                 tabList.AddRange(Utilities.CreateLines(new List<Point3D>() { p1, p2, p3, p4 }));
 
@@ -143,7 +144,7 @@ namespace DoubleR_ES.FrameModel
             HingEntities.Add(thirdLine);
 
             rightProfileTop = fourthPoint;
-            rightProfileBottom = thirdPoint;
+           // rightProfileBottom = thirdPoint;
 
         }
 
@@ -383,7 +384,7 @@ namespace DoubleR_ES.FrameModel
             double slotWidth = 2.5;
             double totalLength = Utilities.InputData.RevealHeight + Utilities.InputData.Architrave1;
 
-            var slotPoints = GetSlotPoints(totalLength, JsonData.Tab.TabBase, slotHeight, slotWidth);
+            var slotPoints = GetSlotPoints(totalLength, JsonData.TabData.TabBase, slotHeight, slotWidth);
             foreach (var point in slotPoints)
             {
                 var slotLines = DrawPocketLines(point, slotHeight, slotWidth);
@@ -473,7 +474,7 @@ namespace DoubleR_ES.FrameModel
             int index = 0;
             var totalHeight = Point3D.Distance(RequiredTopList[index].Line.StartPoint, RequiredTopList[RequiredTopList.Count-1].Line.EndPoint);
 
-            var slotPoints = GetTopSlotPoints(totalHeight, JsonData.Tab.TabBase, slotHeight, slotWidth);
+            var slotPoints = GetTopSlotPoints(totalHeight, JsonData.TabData.TabBase, slotHeight, slotWidth);
 
             foreach (var point in slotPoints)
             {
