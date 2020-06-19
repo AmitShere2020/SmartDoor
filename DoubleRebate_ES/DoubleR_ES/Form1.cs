@@ -301,25 +301,25 @@ namespace DoubleR_ES
         private void txtReturn1_TextChanged(object sender, EventArgs e)
         {
             changeThoratSection();
-            changeCheckButton();
+           // changeCheckButton();
         }
 
         private void txtReturn2_TextChanged(object sender, EventArgs e)
         {
             changeThoratSection();
-            changeCheckButton();
+           // changeCheckButton();
         }
 
         private void txtRebate1_TextChanged(object sender, EventArgs e)
         {
             changeThoratSection();
-            changeCheckButton();
+           // changeCheckButton();
         }
 
         private void txtRebate2_TextChanged(object sender, EventArgs e)
         {
             changeThoratSection();
-            changeCheckButton();
+          //  changeCheckButton();
         }
 
 

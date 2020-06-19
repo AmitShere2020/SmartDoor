@@ -1,5 +1,29 @@
 [
   {
+    "inputData": {
+      "StopSection": 83.0,
+      "FrameQty": 1,
+      "GaugeSize": 1.1,
+      "RevealHeight": 2500.0,
+      "RevealWidth": 950.0,
+      "HingePrep": "SFH",
+      "HingeQty": 2,
+      "StrikePrep": "UNI",
+      "StrikeHeight": 1025.0,
+      "FrameFixing": "D/B-3.5",
+      "TabBase": 15.0,
+      "TabTop": 10.0,
+      "Return1": 15.0,
+      "Architrave1": 38.0,
+      "Rebate1": 41.0,
+      "StopHgt1": 25.0,
+      "Throat": 135.0,
+      "StopHgt2": 25.0,
+      "Rebate2": 41.0,
+      "Architrave2": 38.0,
+      "Return2": 15.0
+    },
+    "ProfileType": 0,
     "GaugeSize": 1.1,
     "ProfileInfo": {
       "StopSection": 83.0,
@@ -285,7 +309,7 @@
         "Displacement": 0.0
       }
     ],
-    "Tab": {
+    "TabData": {
       "Count": 3,
       "TabBase": 15.0,
       "TabTop": 10.0
@@ -575,7 +599,6 @@
       "ConstVLine3": 5.0,
       "ConstHLine4": 14.0,
       "MidWidth": 195.2
-    },
-    "ProfileType": 0
+    }
   }
 ]
